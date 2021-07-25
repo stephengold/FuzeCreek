@@ -297,6 +297,9 @@ public class FC2D
     /**
      * Callback to initialize the display information of a new Cell.
      *
+     * In the 2-D version, the display information consists of a Material
+     * that's applied to a quad mesh in the GUI view.
+     *
      * @param cell the Cell to modify (not null)
      */
     @Override
