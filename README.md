@@ -28,6 +28,7 @@ Java source code is provided under
  + [Acknowledgments](#acks)
 
 <a name="prebuilt"/>
+
 ## How to download and run a pre-built release of Fuze Creek
 
 (documentation not yet written)
@@ -35,6 +36,7 @@ Java source code is provided under
 [Jump to table of contents](#toc)
 
 <a name="build"/>
+
 ## How to build and run Fuze Creek from source
 
 (documentation not yet written)
@@ -42,6 +44,7 @@ Java source code is provided under
 [Jump to table of contents](#toc)
 
 <a name="play"/>
+
 ## Playing Fuze Creek
 
 (documentation not yet written)
@@ -49,6 +52,7 @@ Java source code is provided under
 [Jump to table of contents](#toc)
 
 <a name="args"/>
+
 ## Command-line arguments
 
 (documentation not yet written)
@@ -56,6 +60,7 @@ Java source code is provided under
 [Jump to table of contents](#toc)
 
 <a name="links"/>
+
 ## External links
 
 (documentation not yet written)
@@ -63,6 +68,7 @@ Java source code is provided under
 [Jump to table of contents](#toc)
 
 <a name="wishlist"/>
+
 ## Wish list
 
 (documentation not yet written)
@@ -70,6 +76,7 @@ Java source code is provided under
 [Jump to table of contents](#toc)
 
 <a name="history"/>
+
 ## History
 
 (documentation not yet written)
@@ -77,6 +84,7 @@ Java source code is provided under
 [Jump to table of contents](#toc)
 
 <a name="acks"/>
+
 ## Acknowledgments
 
 (documentation not yet written)
