@@ -13,5 +13,6 @@ if (!hasProperty('mainClass')) {
 jar.manifest.attributes('Main-Class': mainClassName)
 
 dependencies {
+    implementation 'com.github.stephengold:Heart:' + heartVersion
     implementation project(':FCCommon')
 }
