@@ -45,7 +45,7 @@ public class GameState {
     // constants and loggers
 
     /**
-     * points scored for each advance
+     * number of points scored for each advance
      */
     final private static int advancePoints = 1;
     /**
@@ -53,7 +53,7 @@ public class GameState {
      */
     final private static int maxCreekWidth = 60;
     /**
-     * minimum width of the creek, excluding its banks (in cells) TODO test
+     * minimum width of the creek, excluding its banks (in cells)
      */
     final public static int minCreekWidth = 10;
     /**
@@ -133,7 +133,7 @@ public class GameState {
         this.generator = generator;
 
         isOver = false;
-        numRemainingPatches = 10;
+        numRemainingPatches = 20;
         raftLeftX = -raftWidth / 2;
         raftRowIndex = numUpstreamRows;
         totalPoints = 0;
