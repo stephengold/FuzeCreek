@@ -43,11 +43,11 @@ public class RightBankCell extends BankCell {
      *
      * @param row the Row to contain the Cell (not null)
      * @param worldX the desired world X coordinate (may be negative)
-     * @param downstreadDeltaX the relative position of the right bank in the
+     * @param downstreamDeltaX the relative position of the right bank in the
      * downstream Row (-1, 0, or +1)
      */
-    RightBankCell(Row row, int worldX, int downstreadDeltaX) {
-        super(row, worldX, downstreadDeltaX);
+    RightBankCell(Row row, int worldX, int downstreamDeltaX) {
+        super(row, worldX, downstreamDeltaX);
     }
     // *************************************************************************
     // BankCell methods
