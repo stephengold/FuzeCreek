@@ -78,9 +78,13 @@ public class FC2D
     // constants and loggers
 
     /**
-     * number of cell columns that can displayed
+     * world Z coordinate for the raft
      */
-    final private static int numColumns = 70;
+    final private static float raftZ = -0.5f;
+    /**
+     * number of cell columns that can be displayed
+     */
+    final private static int numColumns = 40;
     /**
      * message logger for this class
      */
@@ -178,7 +182,7 @@ public class FC2D
 
         AppSettings appSettings = new AppSettings(true);
         appSettings.setGammaCorrection(true);
-        appSettings.setResolution(1280, 720);
+        appSettings.setResolution(1280, 800);
         appSettings.setVSync(true);
 
         FC2D application = new FC2D();
@@ -297,8 +301,8 @@ public class FC2D
     /**
      * Callback to initialize the display information of a new Cell.
      *
-     * In the 2-D version, the display information consists of a Material
-     * that's applied to a quad mesh in the GUI view.
+     * In the 2-D version, the display information consists of a Material that's
+     * applied to a quad mesh in the GUI view.
      *
      * @param cell the Cell to modify (not null)
      */
@@ -309,8 +313,10 @@ public class FC2D
 
         if (cell instanceof DryLandCell) {
             material = null; // relies on the background color of the ViewPort
+
         } else if (cell instanceof WaterOnlyCell) {
             material = waterOnlyMaterial;
+
         } else if (cell instanceof RockCell) {
             material = rockMaterial;
 
@@ -328,6 +334,7 @@ public class FC2D
 
         } else if (cell instanceof MineCell) {
             material = mineMaterial;
+
         } else {
             String className = cell.getClass().getSimpleName();
             throw new IllegalArgumentException(className);
@@ -400,29 +407,29 @@ public class FC2D
      * Initialize the materials used to visualize cells.
      */
     private void initializeCellMaterials() {
-        ColorRGBA mineColor = new ColorRGBA(1f, 0f, 0f, 1f);
-        mineMaterial = MyAsset.createUnshadedMaterial(assetManager, mineColor);
+        boolean flipY = true;
+        TextureKey key = new TextureKey("Textures/cells/mine.png", flipY);
+        Texture texture = assetManager.loadTexture(key);
+        mineMaterial = MyAsset.createUnshadedMaterial(assetManager, texture);
 
-        ColorRGBA rockColor = new ColorRGBA(1f, 1f, 1f, 1f);
-        rockMaterial = MyAsset.createUnshadedMaterial(assetManager, rockColor);
+        key = new TextureKey("Textures/cells/rock.png", flipY);
+        texture = assetManager.loadTexture(key);
+        rockMaterial = MyAsset.createUnshadedMaterial(assetManager, texture);
 
-        ColorRGBA waterColor = new ColorRGBA(0.5f, 0.5f, 1f, 1f);
+        ColorRGBA waterColor = new ColorRGBA();
+        float opaque = 1f;
+        waterColor.setAsSrgb(0f, 0f, 0.73f, opaque); // dark blue
         waterOnlyMaterial
                 = MyAsset.createUnshadedMaterial(assetManager, waterColor);
 
         for (int upstreamDX = -1; upstreamDX <= +1; ++upstreamDX) {
             for (int downstreamDX = -1; downstreamDX <= +1; ++downstreamDX) {
-                boolean flipY = true;
                 int variant = 3 * upstreamDX + downstreamDX + 4;
                 String downstreamMpz = mpz(downstreamDX);
                 String upstreamMpz = mpz(upstreamDX);
-
-                String assetPath;
-                TextureKey key;
-                Texture texture;
-
-                assetPath = String.format("Textures/cells/leftBank%s%s.png",
-                        upstreamMpz, downstreamMpz);
+                String assetPath = String.format(
+                        "Textures/cells/leftBank%s%s.png", upstreamMpz,
+                        downstreamMpz);
                 key = new TextureKey(assetPath, flipY);
                 texture = assetManager.loadTexture(key);
                 leftBankMaterial[variant]
@@ -449,6 +456,7 @@ public class FC2D
 
         int displayWidth = guiCamera.getWidth();
         cellWidth = displayWidth / numColumns;
+//        System.out.print("cell w=" + cellWidth + " h=" + cellHeight);
     }
 
     /**
@@ -460,15 +468,20 @@ public class FC2D
         raftGeometry = new Geometry("raft", mesh);
         verticalScrollingNode.attachChild(raftGeometry);
 
-        ColorRGBA color = new ColorRGBA(0f, 0.2f, 0f, 1f);
-        Material material = MyAsset.createUnshadedMaterial(assetManager, color);
+        String assetPath
+                = String.format("Textures/raft%d.png", GameState.raftWidth);
+        boolean flipY = true;
+        TextureKey key = new TextureKey(assetPath, flipY);
+        Texture texture = assetManager.loadTexture(key);
+        Material material
+                = MyAsset.createUnshadedMaterial(assetManager, texture);
         raftGeometry.setMaterial(material);
 
         float x = (numColumns / 2) * cellWidth;
         int rowIndex = gameState.raftRowIndex();
         int displayRow = rowIndex - gameState.lastRowIndex();
         float y = displayRow * cellHeight;
-        raftGeometry.setLocalTranslation(x, y, -0.5f);
+        raftGeometry.setLocalTranslation(x, y, raftZ);
     }
 
     /**
