@@ -30,6 +30,7 @@
 package com.github.stephengold.fuzecreek.dd;
 
 import com.github.stephengold.fuzecreek.BankCell;
+import com.github.stephengold.fuzecreek.Cause;
 import com.github.stephengold.fuzecreek.Cell;
 import com.github.stephengold.fuzecreek.DryLandCell;
 import com.github.stephengold.fuzecreek.GameState;
@@ -526,8 +527,24 @@ public class FC2D
             ++deltaX;
         }
 
-        boolean isGameOver = gameState.advance(deltaX);
-        if (isGameOver) {
+        Cause terminationCause = gameState.advance(deltaX);
+        if (terminationCause != null) {
+            switch (terminationCause) {
+                case BOOM:
+                    System.out.println(
+                            "You detonated a mine and were severely hurt!");
+                    break;
+                case GROUNDED:
+                    System.out.println("You landed safely.");
+                    break;
+                case SANK:
+                    System.out.println("Damaged by rocks, your raft sank. "
+                            + "However, you were able to swim ashore.");
+                    break;
+                default:
+                    assert false : terminationCause;
+            }
+
             int totalPoints = gameState.totalPoints();
             System.out.printf("Your final score:  %d point%s%n",
                     totalPoints, (totalPoints == 1) ? "" : "s");

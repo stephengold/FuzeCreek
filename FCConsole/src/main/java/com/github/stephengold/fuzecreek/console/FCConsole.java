@@ -30,6 +30,7 @@
 package com.github.stephengold.fuzecreek.console;
 
 import com.github.stephengold.fuzecreek.BankCell;
+import com.github.stephengold.fuzecreek.Cause;
 import com.github.stephengold.fuzecreek.Cell;
 import com.github.stephengold.fuzecreek.DryLandCell;
 import com.github.stephengold.fuzecreek.GameState;
@@ -88,8 +89,8 @@ public class FCConsole implements View {
     public static void main(String... arguments) {
         startup0();
 
-        boolean isGameOver = false;
-        while (!isGameOver) {
+        Cause terminationCause = null;
+        while (terminationCause == null) {
             updateView();
 
             float vsFraction = gameState.verticalScrollingFraction();
@@ -106,7 +107,23 @@ public class FCConsole implements View {
                 vsFraction = gameState.verticalScrollingFraction();
             }
 
-            isGameOver = gameState.advance(0);
+            terminationCause = gameState.advance(0);
+        }
+
+        switch (terminationCause) {
+            case BOOM:
+                System.out.println(
+                        "You detonated a mine and were severely hurt!");
+                break;
+            case GROUNDED:
+                System.out.println("You landed safely.");
+                break;
+            case SANK:
+                System.out.println("Damaged by rocks, your raft sank. "
+                        + "However, you were able to swim ashore.");
+                break;
+            default:
+                assert false : terminationCause;
         }
 
         int totalPoints = gameState.totalPoints();

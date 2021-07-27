@@ -66,6 +66,6 @@ public class MineCell extends Cell {
     @Override
     public void collide() {
         row.gameState.scorePoints(-100);
-        row.gameState.terminate();
+        row.gameState.terminate(Cause.BOOM);
     }
 }

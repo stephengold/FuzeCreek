@@ -30,52 +30,25 @@
 package com.github.stephengold.fuzecreek;
 
 /**
- * A grid cell that contains the creek's left or right bank.
+ * Enumerate conditions that can cause the rafting game to terminate.
  *
  * @author Stephen Gold sgold@sonic.net
  */
-abstract public class BankCell extends Cell {
-    // *************************************************************************
-    // fields
-
+public enum Cause {
     /**
-     * change in the world X coordinate of the bank, from this cell's Row to its
-     * downstream neighbor (-1, 0, or +1)
+     * detonated a mine
      */
-    final public int downstreamDeltaX;
-    // *************************************************************************
-    // constructors
-
+    BOOM,
     /**
-     * Instantiate a BankCell without any display information.
-     *
-     * @param row the Row to contain the Cell (not null)
-     * @param worldX the desired world X coordinate (may be negative)
-     * @param downstreamDeltaX the relative position of the same bank in the
-     * downstream Row (-1, 0, or +1)
+     * raft ran aground
      */
-    protected BankCell(Row row, int worldX, int downstreamDeltaX) {
-        super(row, worldX);
-        this.downstreamDeltaX = downstreamDeltaX;
-    }
-    // *************************************************************************
-    // new methods exposed
-
+    GROUNDED,
     /**
-     * Determine the change in location of the bank, from the upstream Row to
-     * this cell's Row.
-     *
-     * @return the increase in the world X coordinate (-1, 0, or +1)
+     * gameplay aborted at user's request
      */
-    abstract public int upstreamDeltaX();
-    // *************************************************************************
-    // Cell methods
-
+    QUIT,
     /**
-     * Callback invoked each time a raft collides with this Cell.
+     * raft sank after hitting too many rocks
      */
-    @Override
-    public void collide() {
-        row.gameState.terminate(Cause.GROUNDED);
-    }
+    SANK
 }

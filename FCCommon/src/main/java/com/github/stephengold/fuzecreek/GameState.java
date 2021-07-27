@@ -77,9 +77,9 @@ public class GameState {
     // fields
 
     /**
-     * true &rarr; terminate after advancing, false &rarr; continue
+     * non-null &rarr; terminate after advancing, null &rarr; continue
      */
-    private boolean isOver;
+    private Cause isOver;
     /**
      * generate pseudo-random values
      */
@@ -132,7 +132,7 @@ public class GameState {
         this.view = view;
         this.generator = generator;
 
-        isOver = false;
+        isOver = null;
         numRemainingPatches = 20;
         raftLeftX = -raftWidth / 2;
         raftRowIndex = numUpstreamRows;
@@ -241,11 +241,11 @@ public class GameState {
      *
      * @param deltaX the desired raft movement (in the world +X direction,
      * &ge;-1, &le;+1)
-     * @return true if the game is over, otherwise false
+     * @return enum value if the game is over, otherwise null
      */
-    public boolean advance(int deltaX) {
+    public Cause advance(int deltaX) {
         Validate.inRange(deltaX, "delta X", -1, +1);
-        assert !isOver;
+        assert isOver == null : isOver;
 
         raftLeftX += deltaX;
         ++raftRowIndex;
@@ -295,7 +295,7 @@ public class GameState {
             numRemainingPatches -= numPatches;
         } else {
             numRemainingPatches = 0;
-            terminate();
+            terminate(Cause.SANK);
         }
     }
 
@@ -401,10 +401,10 @@ public class GameState {
     }
 
     /**
-     * Cause the game to end ... after the next advance!
+     * Cause the game to end ... after the current/next advance!
      */
-    public void terminate() {
-        isOver = true;
+    public void terminate(Cause cause) {
+        isOver = cause;
     }
 
     /**

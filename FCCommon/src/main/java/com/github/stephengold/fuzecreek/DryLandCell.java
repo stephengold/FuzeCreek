@@ -55,6 +55,6 @@ public class DryLandCell extends Cell {
      */
     @Override
     public void collide() {
-        row.gameState.terminate();
+        row.gameState.terminate(Cause.GROUNDED);
     }
 }
