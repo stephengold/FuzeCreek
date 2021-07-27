@@ -46,7 +46,7 @@ public class LeftBankCell extends BankCell {
      * @param downstreamDeltaX the relative position of the left bank in the
      * downstream Row (-1, 0, or +1)
      */
-    public LeftBankCell(Row row, int worldX, int downstreamDeltaX) {
+    LeftBankCell(Row row, int worldX, int downstreamDeltaX) {
         super(row, worldX, downstreamDeltaX);
     }
     // *************************************************************************

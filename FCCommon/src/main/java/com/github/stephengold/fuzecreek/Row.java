@@ -98,7 +98,7 @@ public class Row {
      * @param mineProbability the probability that a particular cell contains a
      * mine (&ge;0, &le;1)
      */
-    public Row(GameState gameState, int rowIndex, int numCells, int x0Index,
+    Row(GameState gameState, int rowIndex, int numCells, int x0Index,
             int leftBankX, int rightBankX, int leftDeltaX, int rightDeltaX,
             float rockProbability, float mineProbability) {
         Validate.nonNull(gameState, "game state");

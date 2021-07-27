@@ -44,7 +44,7 @@ public class DryLandCell extends Cell {
      * @param row the Row to contain the Cell (not null)
      * @param worldX the desired world X coordinate (may be negative)
      */
-    public DryLandCell(Row row, int worldX) {
+    DryLandCell(Row row, int worldX) {
         super(row, worldX);
     }
     // *************************************************************************

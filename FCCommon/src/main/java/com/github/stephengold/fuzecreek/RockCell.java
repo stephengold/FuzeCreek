@@ -30,7 +30,7 @@
 package com.github.stephengold.fuzecreek;
 
 /**
- * A grid cell that contains a rock protruding from the water.
+ * A grid cell that contains a sharp rock protruding from the water.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -44,7 +44,7 @@ public class RockCell extends Cell {
      * @param row the Row to contain the Cell (not null)
      * @param worldX the desired world X coordinate (may be negative)
      */
-    public RockCell(Row row, int worldX) {
+    RockCell(Row row, int worldX) {
         super(row, worldX);
     }
     // *************************************************************************
