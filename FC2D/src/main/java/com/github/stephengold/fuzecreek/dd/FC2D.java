@@ -114,9 +114,13 @@ public class FC2D
      */
     private static GameState gameState;
     /**
-     * generate pseudo-random values
+     * generate pseudo-random values for game mechanics
      */
     private static Generator generator;
+    /**
+     * generate pseudo-random values for visualization
+     */
+    private static Generator viewGenerator;
     /**
      * visualize the player's raft
      */
@@ -145,7 +149,7 @@ public class FC2D
     /**
      * visualize clear water
      */
-    private static Material waterOnlyMaterial;
+    final private static Material[] waterOnlyMaterials = new Material[9];
     /**
      * visualize the left bank (9 variants)
      */
@@ -180,6 +184,8 @@ public class FC2D
          */
         Heart.setLoggingLevels(Level.WARNING);
 
+        generator = new Generator();
+
         AppSettings appSettings = new AppSettings(true);
         appSettings.setGammaCorrection(true);
         appSettings.setResolution(1280, 800);
@@ -198,7 +204,7 @@ public class FC2D
      */
     @Override
     public void actionInitializeApplication() {
-        generator = new Generator();
+        viewGenerator = new Generator(99L);
         /*
          * Disable the JME stats display, which was enabled at its creation.
          */
@@ -315,7 +321,8 @@ public class FC2D
             material = null; // relies on the background color of the ViewPort
 
         } else if (cell instanceof WaterOnlyCell) {
-            material = waterOnlyMaterial;
+            int variant = viewGenerator.nextInt(8);
+            material = waterOnlyMaterials[variant];
 
         } else if (cell instanceof RockCell) {
             material = rockMaterial;
@@ -418,9 +425,12 @@ public class FC2D
 
         ColorRGBA waterColor = new ColorRGBA();
         float opaque = 1f;
-        waterColor.setAsSrgb(0f, 0f, 0.73f, opaque); // dark blue
-        waterOnlyMaterial
-                = MyAsset.createUnshadedMaterial(assetManager, waterColor);
+        for (int variant = 0; variant < 9; ++variant) {
+            float chroma = 0.61f + 0.03f * variant;
+            waterColor.setAsSrgb(0f, 0f, chroma, opaque); // dark blue
+            waterOnlyMaterials[variant]
+                    = MyAsset.createUnshadedMaterial(assetManager, waterColor);
+        }
 
         for (int upstreamDX = -1; upstreamDX <= +1; ++upstreamDX) {
             for (int downstreamDX = -1; downstreamDX <= +1; ++downstreamDX) {
