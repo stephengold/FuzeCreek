@@ -109,9 +109,18 @@ public class GameState {
      */
     private long advanceMillis;
     /**
+     * time when the game ended (in milliseconds since 1969, valid only if
+     * isOver != null)
+     */
+    private long endTime;
+    /**
      * ideal time for the next advance (in milliseconds since 1969)
      */
     private long nextAdvanceMillis;
+    /**
+     * time when the game started (in milliseconds since 1969)
+     */
+    final private long startTime;
     /**
      * access rows by index (indices grow in the downstream direction)
      */
@@ -143,7 +152,8 @@ public class GameState {
         raftRowIndex = numUpstreamRows;
         totalPoints = 0;
         advanceMillis = 400L;
-        nextAdvanceMillis = System.currentTimeMillis() + advanceMillis;
+        startTime = System.currentTimeMillis();
+        nextAdvanceMillis = startTime + advanceMillis;
 
         int numVisibleRows = countVisibleRows();
         rows = new HashMap<>(numVisibleRows);
@@ -287,6 +297,10 @@ public class GameState {
         int purgeRowIndex = raftRowIndex - numUpstreamRows - 1;
         rows.remove(purgeRowIndex);
 
+        if (isOver != null) {
+            endTime = System.currentTimeMillis();
+        }
+
         assert rows.keySet().size() == countVisibleRows();
         return isOver;
     }
@@ -331,6 +345,24 @@ public class GameState {
      */
     public static int countVisibleRows() {
         int result = numDownstreamRows + numUpstreamRows + 1;
+        return result;
+    }
+
+    /**
+     * Determine the duration of the game so far.
+     *
+     * @return the elapsed time (in seconds, &ge;0)
+     */
+    public float elapsedSeconds() {
+        long elapsedMillis;
+        if (isOver == null) {
+            elapsedMillis = System.currentTimeMillis() - startTime;
+        } else {
+            elapsedMillis = endTime - startTime;
+        }
+        float result = elapsedMillis / 1000f;
+
+        assert result >= 0f : result;
         return result;
     }
 

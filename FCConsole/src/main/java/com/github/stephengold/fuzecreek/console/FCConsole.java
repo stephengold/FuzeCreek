@@ -126,6 +126,11 @@ public class FCConsole implements View {
                 assert false : terminationCause;
         }
 
+        float seconds = gameState.elapsedSeconds();
+        float ss = seconds % 60f;
+        int mm = (int) Math.round((seconds - ss) / 60f);
+        System.out.printf("Game duration:  %dm %06.3fs%n", mm, ss);
+
         int numAdvances = gameState.countAdvances();
         System.out.println("Number of advances:  " + numAdvances);
         int numPatches = gameState.countRemainingPatches();
