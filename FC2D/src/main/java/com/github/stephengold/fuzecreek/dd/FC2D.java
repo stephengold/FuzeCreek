@@ -544,6 +544,11 @@ public class FC2D
                     assert false : terminationCause;
             }
 
+            int numAdvances = gameState.countAdvances();
+            System.out.println("Number of advances:  " + numAdvances);
+            int numPatches = gameState.countRemainingPatches();
+            System.out.println("Number of leftover patches:  " + numPatches);
+
             int totalPoints = gameState.totalPoints();
             System.out.printf("Your final score:  %d point%s%n",
                     totalPoints, (totalPoints == 1) ? "" : "s");

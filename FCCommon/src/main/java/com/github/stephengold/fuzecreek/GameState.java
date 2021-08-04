@@ -85,6 +85,10 @@ public class GameState {
      */
     final public Generator generator;
     /**
+     * number of times the simulation has advanced (&ge;0)
+     */
+    private int numAdvances;
+    /**
      * number of patches in the player's inventory (&ge;0)
      */
     private int numRemainingPatches;
@@ -133,6 +137,7 @@ public class GameState {
         this.generator = generator;
 
         isOver = null;
+        numAdvances = 0;
         numRemainingPatches = 20;
         raftLeftX = -raftWidth / 2;
         raftRowIndex = numUpstreamRows;
@@ -247,6 +252,7 @@ public class GameState {
         Validate.inRange(deltaX, "delta X", -1, +1);
         assert isOver == null : isOver;
 
+        ++numAdvances;
         raftLeftX += deltaX;
         ++raftRowIndex;
         scorePoints(advancePoints);
@@ -298,6 +304,15 @@ public class GameState {
             numRemainingPatches = 0;
             terminate(Cause.SANK);
         }
+    }
+
+    /**
+     * Count how many times the simulation has advanced.
+     *
+     * @return the count (&ge;0)
+     */
+    public int countAdvances() {
+        return numAdvances;
     }
 
     /**
