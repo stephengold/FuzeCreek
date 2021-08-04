@@ -59,7 +59,7 @@ public class GameState {
     /**
      * number of rows visible downstream of the raft
      */
-    final private static int numDownstreamRows = 22;
+    final private static int numDownstreamRows = 23;
     /**
      * number of rows visible upstream of the raft
      */
@@ -278,9 +278,10 @@ public class GameState {
          * Purge a Row that's no longer visible,
          * so that the JVM can reclaim its memory.
          */
-        int purgeRowIndex = raftRowIndex - numUpstreamRows - 2;
+        int purgeRowIndex = raftRowIndex - numUpstreamRows - 1;
         rows.remove(purgeRowIndex);
 
+        assert rows.keySet().size() == countVisibleRows();
         return isOver;
     }
 

@@ -295,7 +295,7 @@ public class FC2D
          * Implement smooth vertical scrolling.
          */
         float vsFraction = gameState.verticalScrollingFraction();
-        float yOffset = vsFraction * cellHeight;
+        float yOffset = (vsFraction - 1f) * cellHeight;
         verticalScrollingNode.setLocalTranslation(0f, yOffset, 0f);
 
         if (vsFraction < 0f) {
@@ -462,7 +462,7 @@ public class FC2D
         Camera guiCamera = guiViewPort.getCamera();
         int displayHeight = guiCamera.getHeight();
         int numRows = GameState.countVisibleRows();
-        cellHeight = displayHeight / numRows;
+        cellHeight = displayHeight / (numRows - 1); // 2 rows partially hidden
 
         int displayWidth = guiCamera.getWidth();
         cellWidth = displayWidth / numColumns;
