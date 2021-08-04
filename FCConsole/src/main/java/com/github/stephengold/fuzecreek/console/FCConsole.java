@@ -39,18 +39,30 @@ import com.github.stephengold.fuzecreek.RockCell;
 import com.github.stephengold.fuzecreek.Row;
 import com.github.stephengold.fuzecreek.View;
 import com.github.stephengold.fuzecreek.WaterOnlyCell;
+import com.jme3.app.StatsAppState;
+import com.jme3.font.Rectangle;
+import com.jme3.input.KeyInput;
+import com.jme3.scene.Node;
+import com.jme3.system.AppSettings;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jme3utilities.Heart;
 import jme3utilities.Validate;
 import jme3utilities.math.noise.Generator;
+import jme3utilities.ui.ActionApplication;
+import jme3utilities.ui.HelpUtils;
+import jme3utilities.ui.InputMode;
+import jme3utilities.ui.Signals;
 
 /**
  * A rafting game with explosives (console version).
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class FCConsole implements View {
+public class FCConsole
+        extends ActionApplication
+        implements View {
     // *************************************************************************
     // constants and loggers
 
@@ -59,14 +71,22 @@ public class FCConsole implements View {
      */
     final private static CharSequence raftString = "[]";
     /**
-     * number of cell columns that can displayed
+     * number of cell columns that can be displayed
      */
-    final private static int numColumns = 70;
+    final private static int numColumns = 40;
     /**
      * message logger for this class
      */
     final private static Logger logger
             = Logger.getLogger(FCConsole.class.getName());
+    /**
+     * name of the input signal used to steer left
+     */
+    final private static String leftSignalName = "left";
+    /**
+     * name of the input signal used to steer right
+     */
+    final private static String rightSignalName = "right";
     // *************************************************************************
     // fields
 
@@ -75,70 +95,93 @@ public class FCConsole implements View {
      */
     private static GameState gameState;
     /**
-     * generate pseudo-random values
+     * generate pseudo-random values for game mechanics
      */
     private static Generator generator;
+    /**
+     * Node for displaying hotkey help in the GUI scene
+     */
+    private static Node helpNode;
     // *************************************************************************
     // new methods exposed
 
     /**
-     * Main entry point for the ConsoleMain application.
+     * Main entry point for the FCConsole application.
      *
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String... arguments) {
-        startup0();
+        /*
+         * Mute the chatty loggers found in some imported packages.
+         */
+        Heart.setLoggingLevels(Level.WARNING);
 
-        Cause terminationCause = null;
-        while (terminationCause == null) {
-            updateView();
+        generator = new Generator();
 
-            float vsFraction = gameState.verticalScrollingFraction();
-            while (vsFraction >= 0f) {
-                /*
-                 * It's too soon to advance the simulation.
-                 */
-                long sleepMillis = 10L;
-                try {
-                    Thread.sleep(sleepMillis);
-                } catch (InterruptedException exception) {
-                    logger.log(Level.SEVERE, null, exception);
-                }
-                vsFraction = gameState.verticalScrollingFraction();
-            }
+        AppSettings appSettings = new AppSettings(true);
+        appSettings.setGammaCorrection(true);
+        appSettings.setResolution(480, 240);
+        appSettings.setVSync(true);
 
-            terminationCause = gameState.advance(0);
+        FCConsole application = new FCConsole();
+        application.setSettings(appSettings);
+        application.setShowSettings(false);
+        application.start();
+    }
+    // *************************************************************************
+    // ActionApplication methods
+
+    /**
+     * Initialize the FCConsole application.
+     */
+    @Override
+    public void actionInitializeApplication() {
+        /*
+         * Disable the JME stats display, which was enabled at its creation.
+         */
+        stateManager.getState(StatsAppState.class).toggleStats();
+
+        gameState = new GameState(this, generator);
+    }
+
+    /**
+     * Add application-specific hotkey bindings and build the help nodes.
+     */
+    @Override
+    public void moreDefaultBindings() {
+        InputMode diMode = getDefaultInputMode();
+        diMode.unbind(KeyInput.KEY_C);
+        diMode.unbind(KeyInput.KEY_Q);
+        diMode.unbind(KeyInput.KEY_S);
+        diMode.unbind(KeyInput.KEY_W);
+        diMode.unbind(KeyInput.KEY_Z);
+        /*
+         * To steer, press the A and D keys on the keyboard.
+         */
+        diMode.bindSignal(leftSignalName, KeyInput.KEY_A, KeyInput.KEY_LEFT);
+        diMode.bindSignal(rightSignalName, KeyInput.KEY_D, KeyInput.KEY_RIGHT);
+        /*
+         * Build and attach the help node.
+         */
+        float x = 10f;
+        float y = cam.getHeight() - 10f;
+        float width = cam.getWidth() - 20f;
+        float height = cam.getHeight() - 20f;
+        Rectangle bounds = new Rectangle(x, y, width, height);
+        attachHelpNode(bounds);
+    }
+
+    /**
+     * Callback invoked once per frame.
+     *
+     * @param tpf the time interval between frames (in seconds, &ge;0)
+     */
+    @Override
+    public void simpleUpdate(float tpf) {
+        float vsFraction = gameState.verticalScrollingFraction();
+        if (vsFraction < 0f) {
+            testSignalsAndAdvance();
         }
-
-        switch (terminationCause) {
-            case BOOM:
-                System.out.println(
-                        "You detonated a mine and were severely hurt!");
-                break;
-            case GROUNDED:
-                System.out.println("You landed safely.");
-                break;
-            case SANK:
-                System.out.println("Damaged by rocks, your raft sank. "
-                        + "However, you were able to swim ashore.");
-                break;
-            default:
-                assert false : terminationCause;
-        }
-
-        float seconds = gameState.elapsedSeconds();
-        float ss = seconds % 60f;
-        int mm = (int) Math.round((seconds - ss) / 60f);
-        System.out.printf("Game duration:  %dm %06.3fs%n", mm, ss);
-
-        int numAdvances = gameState.countAdvances();
-        System.out.println("Number of advances:  " + numAdvances);
-        int numPatches = gameState.countRemainingPatches();
-        System.out.println("Number of leftover patches:  " + numPatches);
-
-        int totalPoints = gameState.totalPoints();
-        System.out.printf("Your final score:  %d point%s%n",
-                totalPoints, (totalPoints == 1) ? "" : "s");
     }
     // *************************************************************************
     // View methods
@@ -197,6 +240,22 @@ public class FCConsole implements View {
     }
     // *************************************************************************
     // private methods
+
+    /**
+     * Generate hotkey help and attach it to the GUI scene.
+     *
+     * @param bounds the desired screen coordinates (not null, unaffected)
+     */
+    private void attachHelpNode(Rectangle bounds) {
+        Validate.nonNull(bounds, "bounds");
+
+        InputMode inputMode = getDefaultInputMode();
+        float extraSpace = 20f;
+        helpNode = HelpUtils.buildNode(inputMode, bounds, guiFont, extraSpace);
+        helpNode.move(0f, 0f, 1f); // move (slightly) to the front
+
+        guiNode.attachChild(helpNode);
+    }
 
     /**
      * Visualize the specified Row (not containing the player's raft) by
@@ -260,13 +319,54 @@ public class FCConsole implements View {
     }
 
     /**
-     * Initialization performed immediately after parsing the command-line
-     * arguments.
+     * Test the input signals and advance the simulation accordingly.
      */
-    private static void startup0() {
-        View gameView = new FCConsole();
-        generator = new Generator();
-        gameState = new GameState(gameView, generator);
+    private void testSignalsAndAdvance() {
+        Signals signals = getSignals();
+        int deltaX = 0;
+        if (signals.test(leftSignalName)) {
+            --deltaX;
+        }
+        if (signals.test(rightSignalName)) {
+            ++deltaX;
+        }
+
+        Cause terminationCause = gameState.advance(deltaX);
+        if (terminationCause == null) {
+            updateView();
+        } else {
+            switch (terminationCause) {
+                case BOOM:
+                    System.out.println(
+                            "You detonated a mine and were severely injured!");
+                    break;
+                case GROUNDED:
+                    System.out.println("You landed safely.");
+                    break;
+                case SANK:
+                    System.out.println("Damaged by rocks, your raft sank. "
+                            + "However, you managed to swim ashore.");
+                    break;
+                default:
+                    assert false : terminationCause;
+            }
+
+            float seconds = gameState.elapsedSeconds();
+            float ss = seconds % 60f;
+            int mm = Math.round((seconds - ss) / 60f);
+            System.out.printf("Game duration:  %dm %06.3fs%n", mm, ss);
+
+            int numAdvances = gameState.countAdvances();
+            System.out.println("Number of advances:  " + numAdvances);
+            int numPatches = gameState.countRemainingPatches();
+            System.out.println("Number of leftover patches:  " + numPatches);
+
+            int totalPoints = gameState.totalPoints();
+            System.out.printf("Your final score:  %d point%s%n",
+                    totalPoints, (totalPoints == 1) ? "" : "s");
+
+            stop();
+        }
     }
 
     /**

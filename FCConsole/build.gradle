@@ -13,6 +13,14 @@ if (!hasProperty('mainClass')) {
 jar.manifest.attributes('Main-Class': mainClassName)
 
 dependencies {
-    implementation 'com.github.stephengold:Heart:' + heartVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jmonkeyengineVersion
+
+    // FCConsole doesn't use jme3-jogg or jme3-plugins
+    //  -- they are added solely to avoid warnings from AssetConfig
+    runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
+
+    // non-JME dependencies:
+    implementation 'com.github.stephengold:jme3-utilities-ui:' + jme3utilitiesuiVersion
     implementation project(':FCCommon')
 }
