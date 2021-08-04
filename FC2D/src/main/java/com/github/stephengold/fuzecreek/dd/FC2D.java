@@ -531,14 +531,14 @@ public class FC2D
             switch (terminationCause) {
                 case BOOM:
                     System.out.println(
-                            "You detonated a mine and were severely hurt!");
+                            "You detonated a mine and were severely injured!");
                     break;
                 case GROUNDED:
                     System.out.println("You landed safely.");
                     break;
                 case SANK:
                     System.out.println("Damaged by rocks, your raft sank. "
-                            + "However, you were able to swim ashore.");
+                            + "However, you managed to swim ashore.");
                     break;
                 default:
                     assert false : terminationCause;
@@ -546,7 +546,7 @@ public class FC2D
 
             float seconds = gameState.elapsedSeconds();
             float ss = seconds % 60f;
-            int mm = (int) Math.round((seconds - ss) / 60f);
+            int mm = Math.round((seconds - ss) / 60f);
             System.out.printf("Game duration:  %dm %06.3fs%n", mm, ss);
 
             int numAdvances = gameState.countAdvances();
