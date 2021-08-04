@@ -148,7 +148,7 @@ public class FC2D
      */
     private static Material rockMaterial;
     /**
-     * visualize clear water
+     * visualize clear water (9 shades of blue)
      */
     final private static Material[] waterOnlyMaterials = new Material[9];
     /**
@@ -322,8 +322,7 @@ public class FC2D
             material = null; // relies on the background color of the ViewPort
 
         } else if (cell instanceof WaterOnlyCell) {
-            int variant = viewGenerator.nextInt(8);
-            material = waterOnlyMaterials[variant];
+            material = (Material) viewGenerator.pick(waterOnlyMaterials);
 
         } else if (cell instanceof RockCell) {
             material = rockMaterial;
