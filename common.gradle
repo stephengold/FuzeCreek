@@ -1,6 +1,13 @@
-// Gradle settings and tasks common to all subprojects
+// Gradle settings and tasks common to all FuzeCreek subprojects
 
 apply plugin: 'java'
+
+ext {
+    // current versions of various libraries:
+    heartVersion = '7.1.0'
+    jme3utilitiesuiVersion = '0.9.4'
+    jmonkeyengineVersion = '3.4.0-stable'
+}
 
 sourceCompatibility = '1.8'
 
@@ -14,13 +21,6 @@ gradle.projectsEvaluated {
         enableAssertions true
         jvmArgs '-XX:+UseG1GC', '-XX:MaxGCPauseMillis=10'
     }
-}
-
-ext {
-    // current versions of various libraries
-    heartVersion = '7.1.0'
-    jme3utilitiesuiVersion = '0.9.4'
-    jmonkeyengineVersion = '3.4.0-stable'
 }
 
 repositories {
