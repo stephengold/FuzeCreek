@@ -2,7 +2,9 @@
 //   for this project. This initialization is applied in the "build.gradle"
 //   of the root project.
 
-apply plugin: 'application'
+plugins {
+    id 'application'
+}
 
 description = 'a rafting game with explosives (console version)'
 
@@ -15,8 +17,8 @@ jar.manifest.attributes('Main-Class': mainClassName)
 dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jmonkeyengineVersion
 
-    // FCConsole doesn't use jme3-jogg or jme3-plugins
-    //  -- they are added solely to avoid warnings from AssetConfig
+    // FCConsole doesn't use jme3-jogg nor jme3-plugins
+    //  -- they are included solely to avoid warnings from AssetConfig
     runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jmonkeyengineVersion
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
 
