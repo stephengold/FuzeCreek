@@ -14,7 +14,8 @@ It contains 4 sub-projects:
 Java source code is provided under
 [a FreeBSD license](https://github.com/stephengold/FuzeCreek/blob/master/LICENSE).
 
-<a name="toc"/>
+
+<a name="toc"></a>
 
 ## Contents of this document
 
@@ -27,7 +28,8 @@ Java source code is provided under
  + [History](#history)
  + [Acknowledgments](#acks)
 
-<a name="prebuilt"/>
+
+<a name="prebuilt"></a>
 
 ## How to download and run a pre-built release of Fuze Creek
 
@@ -35,7 +37,8 @@ Java source code is provided under
 
 [Jump to table of contents](#toc)
 
-<a name="build"/>
+
+<a name="build"></a>
 
 ## How to build and run Fuze Creek from source
 
@@ -43,7 +46,8 @@ Java source code is provided under
 
 [Jump to table of contents](#toc)
 
-<a name="play"/>
+
+<a name="play"></a>
 
 ## Playing Fuze Creek
 
@@ -51,7 +55,8 @@ Java source code is provided under
 
 [Jump to table of contents](#toc)
 
-<a name="args"/>
+
+<a name="args"></a>
 
 ## Command-line arguments
 
@@ -59,7 +64,8 @@ Java source code is provided under
 
 [Jump to table of contents](#toc)
 
-<a name="links"/>
+
+<a name="links"></a>
 
 ## External links
 
@@ -67,7 +73,8 @@ Java source code is provided under
 
 [Jump to table of contents](#toc)
 
-<a name="wishlist"/>
+
+<a name="wishlist"></a>
 
 ## Wish list
 
@@ -75,7 +82,8 @@ Java source code is provided under
 
 [Jump to table of contents](#toc)
 
-<a name="history"/>
+
+<a name="history"></a>
 
 ## History
 
@@ -83,7 +91,8 @@ Java source code is provided under
 
 [Jump to table of contents](#toc)
 
-<a name="acks"/>
+
+<a name="acks"></a>
 
 ## Acknowledgments
 
