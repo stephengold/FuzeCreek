@@ -3,5 +3,5 @@
 //   of the root project.
 
 dependencies {
-    implementation 'com.github.stephengold:Heart:' + heartVersion
+    implementation heartCoordinates
 }

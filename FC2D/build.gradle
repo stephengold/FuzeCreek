@@ -23,6 +23,6 @@ dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jme3Version
 
     // non-JME dependencies:
-    implementation 'com.github.stephengold:Acorus:' + acorusVersion
+    implementation acorusCoordinates
     implementation project(':FCCommon')
 }
