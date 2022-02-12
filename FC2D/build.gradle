@@ -6,8 +6,6 @@ plugins {
     id 'application'
 }
 
-description = 'a rafting game with explosives (2-D graphics version)'
-
 mainClassName = 'com.github.stephengold.fuzecreek.dd.FC2D'
 if (!hasProperty('mainClass')) {
     ext.mainClass = mainClassName

@@ -6,8 +6,6 @@ plugins {
     id 'application'
 }
 
-description = 'a rafting game with explosives (console version)'
-
 mainClassName = 'com.github.stephengold.fuzecreek.console.FCConsole'
 if (!hasProperty('mainClass')) {
     ext.mainClass = mainClassName
