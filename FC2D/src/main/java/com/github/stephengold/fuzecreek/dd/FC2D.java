@@ -188,10 +188,8 @@ public class FC2D
         generator = new Generator();
 
         AppSettings appSettings = new AppSettings(true);
-        appSettings.setGammaCorrection(true);
         appSettings.setRenderer(AppSettings.LWJGL_OPENGL32);
         appSettings.setResolution(1280, 800);
-        appSettings.setVSync(true);
 
         FC2D application = new FC2D();
         application.setSettings(appSettings);
