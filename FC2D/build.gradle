@@ -13,16 +13,13 @@ if (!hasProperty('mainClass')) {
 jar.manifest.attributes('Main-Class': mainClassName)
 
 dependencies {
+    implementation acorusCoordinates
     runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jme3Version
 
     // FC2D doesn't use jme3-jogg nor jme3-plugins
-    //  -- they are included solely to avoid warnings from AssetConfig
+    //  -- they are included solely to avoid warnings from AssetConfig.
     runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jme3Version
-
-    // non-JME dependencies:
-    implementation acorusCoordinates
-    implementation project(':FCCommon')
 
     // LWJGL 3.3 dependencies that were omitted from JME v3.5:
     runtimeOnly 'org.lwjgl:lwjgl:' + lwjgl3Version + ':natives-macos-arm64'
@@ -30,4 +27,6 @@ dependencies {
     runtimeOnly 'org.lwjgl:lwjgl-jemalloc:' + lwjgl3Version + ':natives-macos-arm64'
     runtimeOnly 'org.lwjgl:lwjgl-openal:' + lwjgl3Version + ':natives-macos-arm64'
     runtimeOnly 'org.lwjgl:lwjgl-opengl:' + lwjgl3Version + ':natives-macos-arm64'
+
+    implementation project(':FCCommon')
 }
