@@ -230,6 +230,33 @@ public class FC2D
     }
 
     /**
+     * Callback invoked when the active InputMode changes.
+     *
+     * @param oldMode the old mode, or null if none
+     * @param newMode the new mode, or null if none
+     */
+    @Override
+    public void inputModeChange(InputMode oldMode, InputMode newMode) {
+        if (newMode != null) {
+            if (helpNode != null) {
+                helpNode.removeFromParent();
+            }
+            if (minHelpNode != null) {
+                minHelpNode.removeFromParent();
+            }
+            /*
+             * Build 2 help nodes and attach the smaller one.
+             */
+            float x = 10f;
+            float y = cam.getHeight() - 30f;
+            float width = cam.getWidth() - 20f;
+            float height = cam.getHeight() - 40f;
+            Rectangle bounds = new Rectangle(x, y, width, height);
+            attachHelpNode(bounds);
+        }
+    }
+
+    /**
      * Add application-specific hotkey bindings and build the help nodes.
      */
     @Override
@@ -249,15 +276,6 @@ public class FC2D
          * To show/hide the help info, press the H key.
          */
         diMode.bind(asToggleHelp, KeyInput.KEY_F1, KeyInput.KEY_H);
-        /*
-         * Build 2 help nodes and attach the smaller one.
-         */
-        float x = 10f;
-        float y = cam.getHeight() - 30f;
-        float width = cam.getWidth() - 20f;
-        float height = cam.getHeight() - 40f;
-        Rectangle bounds = new Rectangle(x, y, width, height);
-        attachHelpNode(bounds);
     }
 
     /**

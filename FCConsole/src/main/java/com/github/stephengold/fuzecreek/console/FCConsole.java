@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -145,6 +145,30 @@ public class FCConsole
     }
 
     /**
+     * Callback invoked when the active InputMode changes.
+     *
+     * @param oldMode the old mode, or null if none
+     * @param newMode the new mode, or null if none
+     */
+    @Override
+    public void inputModeChange(InputMode oldMode, InputMode newMode) {
+        if (newMode != null) {
+            if (helpNode != null) {
+                helpNode.removeFromParent();
+            }
+            /*
+             * Build and attach the help node.
+             */
+            float x = 10f;
+            float y = cam.getHeight() - 10f;
+            float width = cam.getWidth() - 20f;
+            float height = cam.getHeight() - 20f;
+            Rectangle bounds = new Rectangle(x, y, width, height);
+            attachHelpNode(bounds);
+        }
+    }
+
+    /**
      * Add application-specific hotkey bindings and build the help nodes.
      */
     @Override
@@ -160,15 +184,6 @@ public class FCConsole
          */
         diMode.bindSignal(leftSignalName, KeyInput.KEY_A, KeyInput.KEY_LEFT);
         diMode.bindSignal(rightSignalName, KeyInput.KEY_D, KeyInput.KEY_RIGHT);
-        /*
-         * Build and attach the help node.
-         */
-        float x = 10f;
-        float y = cam.getHeight() - 10f;
-        float width = cam.getWidth() - 20f;
-        float height = cam.getHeight() - 20f;
-        Rectangle bounds = new Rectangle(x, y, width, height);
-        attachHelpNode(bounds);
     }
 
     /**
