@@ -142,6 +142,7 @@ public class FCConsole
          */
         stateManager.getState(StatsAppState.class).toggleStats();
 
+        super.actionInitializeApplication();
         gameState = new GameState(this, generator);
     }
 

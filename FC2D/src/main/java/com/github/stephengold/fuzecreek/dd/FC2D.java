@@ -203,6 +203,8 @@ public class FC2D
          * Disable the JME stats display, which was enabled at its creation.
          */
         stateManager.getState(StatsAppState.class).toggleStats();
+
+        super.actionInitializeApplication();
         /*
          * Add the status text to the GUI.
          */
