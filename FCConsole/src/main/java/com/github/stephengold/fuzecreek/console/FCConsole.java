@@ -40,9 +40,7 @@ import com.github.stephengold.fuzecreek.Row;
 import com.github.stephengold.fuzecreek.View;
 import com.github.stephengold.fuzecreek.WaterOnlyCell;
 import com.jme3.app.StatsAppState;
-import com.jme3.font.Rectangle;
 import com.jme3.input.KeyInput;
-import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
 import java.io.PrintStream;
 import java.util.logging.Level;
@@ -50,8 +48,7 @@ import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.Validate;
 import jme3utilities.math.noise.Generator;
-import jme3utilities.ui.ActionApplication;
-import jme3utilities.ui.HelpUtils;
+import jme3utilities.ui.AbstractDemo;
 import jme3utilities.ui.InputMode;
 import jme3utilities.ui.Signals;
 
@@ -61,7 +58,7 @@ import jme3utilities.ui.Signals;
  * @author Stephen Gold sgold@sonic.net
  */
 public class FCConsole
-        extends ActionApplication
+        extends AbstractDemo
         implements View {
     // *************************************************************************
     // constants and loggers
@@ -98,10 +95,6 @@ public class FCConsole
      * generate pseudo-random values for game mechanics
      */
     private static Generator generator;
-    /**
-     * Node for displaying hotkey help in the GUI scene
-     */
-    private static Node helpNode;
     // *************************************************************************
     // new methods exposed
 
@@ -110,7 +103,7 @@ public class FCConsole
      *
      * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String... arguments) {
+    public static void main(String[] arguments) {
         /*
          * Mute the chatty loggers found in some imported packages.
          */
@@ -129,7 +122,7 @@ public class FCConsole
         application.start();
     }
     // *************************************************************************
-    // ActionApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialize the FCConsole application.
@@ -145,31 +138,7 @@ public class FCConsole
     }
 
     /**
-     * Callback invoked when the active InputMode changes.
-     *
-     * @param oldMode the old mode, or null if none
-     * @param newMode the new mode, or null if none
-     */
-    @Override
-    public void inputModeChange(InputMode oldMode, InputMode newMode) {
-        if (newMode != null) {
-            if (helpNode != null) {
-                helpNode.removeFromParent();
-            }
-            /*
-             * Build and attach the help node.
-             */
-            float x = 10f;
-            float y = cam.getHeight() - 10f;
-            float width = cam.getWidth() - 20f;
-            float height = cam.getHeight() - 20f;
-            Rectangle bounds = new Rectangle(x, y, width, height);
-            attachHelpNode(bounds);
-        }
-    }
-
-    /**
-     * Add application-specific hotkey bindings and build the help nodes.
+     * Add application-specific hotkey bindings and override existing ones.
      */
     @Override
     public void moreDefaultBindings() {
@@ -255,22 +224,6 @@ public class FCConsole
     }
     // *************************************************************************
     // private methods
-
-    /**
-     * Generate hotkey help and attach it to the GUI scene.
-     *
-     * @param bounds the desired screen coordinates (not null, unaffected)
-     */
-    private void attachHelpNode(Rectangle bounds) {
-        Validate.nonNull(bounds, "bounds");
-
-        InputMode inputMode = getDefaultInputMode();
-        float extraSpace = 20f;
-        helpNode = HelpUtils.buildNode(inputMode, bounds, guiFont, extraSpace);
-        helpNode.move(0f, 0f, 1f); // move (slightly) to the front
-
-        guiNode.attachChild(helpNode);
-    }
 
     /**
      * Visualize the specified Row (not containing the player's raft) by
