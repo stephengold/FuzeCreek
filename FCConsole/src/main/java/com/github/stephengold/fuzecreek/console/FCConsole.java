@@ -46,6 +46,7 @@ import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
+import jme3utilities.MyString;
 import jme3utilities.Validate;
 import jme3utilities.math.noise.Generator;
 import jme3utilities.ui.AbstractDemo;
@@ -77,6 +78,11 @@ public class FCConsole
     final private static Logger logger
             = Logger.getLogger(FCConsole.class.getName());
     /**
+     * application name (for the title bar of the app's window)
+     */
+    final private static String applicationName
+            = FCConsole.class.getSimpleName();
+     /**
      * name of the input signal used to steer left
      */
     final private static String leftSignalName = "left";
@@ -104,6 +110,7 @@ public class FCConsole
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
+        String title = applicationName + " " + MyString.join(arguments);
         /*
          * Mute the chatty loggers found in some imported packages.
          */
@@ -114,6 +121,7 @@ public class FCConsole
         AppSettings appSettings = new AppSettings(true);
         appSettings.setGammaCorrection(true);
         appSettings.setResolution(480, 240);
+        appSettings.setTitle(title); // Customize the window's title bar.
         appSettings.setVSync(true);
 
         FCConsole application = new FCConsole();
