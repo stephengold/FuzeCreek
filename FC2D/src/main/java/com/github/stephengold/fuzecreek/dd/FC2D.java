@@ -44,7 +44,6 @@ import com.github.stephengold.fuzecreek.WaterOnlyCell;
 import com.jme3.app.StatsAppState;
 import com.jme3.asset.TextureKey;
 import com.jme3.font.BitmapText;
-import com.jme3.font.Rectangle;
 import com.jme3.input.KeyInput;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
@@ -62,8 +61,7 @@ import jme3utilities.Heart;
 import jme3utilities.MyAsset;
 import jme3utilities.Validate;
 import jme3utilities.math.noise.Generator;
-import jme3utilities.ui.ActionApplication;
-import jme3utilities.ui.HelpUtils;
+import jme3utilities.ui.AbstractDemo;
 import jme3utilities.ui.InputMode;
 import jme3utilities.ui.Signals;
 
@@ -73,7 +71,7 @@ import jme3utilities.ui.Signals;
  * @author Stephen Gold sgold@sonic.net
  */
 public class FC2D
-        extends ActionApplication
+        extends AbstractDemo
         implements View {
     // *************************************************************************
     // constants and loggers
@@ -91,10 +89,6 @@ public class FC2D
      */
     final private static Logger logger
             = Logger.getLogger(FC2D.class.getName());
-    /**
-     * action string to toggle the help node
-     */
-    final private static String asToggleHelp = "toggle help";
     /**
      * name of the input signal used to steer left
      */
@@ -160,14 +154,6 @@ public class FC2D
      */
     final private static Material[] rightBankMaterial = new Material[9];
     /**
-     * Node for displaying hotkey help in the GUI scene
-     */
-    private static Node helpNode;
-    /**
-     * Node for displaying "toggle help: H" in the GUI scene
-     */
-    private static Node minHelpNode;
-    /**
      * parent all cell geometries for efficient vertical scrolling
      */
     private static Node verticalScrollingNode;
@@ -197,7 +183,7 @@ public class FC2D
         application.start();
     }
     // *************************************************************************
-    // ActionApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialize the FC2D application.
@@ -230,33 +216,6 @@ public class FC2D
     }
 
     /**
-     * Callback invoked when the active InputMode changes.
-     *
-     * @param oldMode the old mode, or null if none
-     * @param newMode the new mode, or null if none
-     */
-    @Override
-    public void inputModeChange(InputMode oldMode, InputMode newMode) {
-        if (newMode != null) {
-            if (helpNode != null) {
-                helpNode.removeFromParent();
-            }
-            if (minHelpNode != null) {
-                minHelpNode.removeFromParent();
-            }
-            /*
-             * Build 2 help nodes and attach the smaller one.
-             */
-            float x = 10f;
-            float y = cam.getHeight() - 30f;
-            float width = cam.getWidth() - 20f;
-            float height = cam.getHeight() - 40f;
-            Rectangle bounds = new Rectangle(x, y, width, height);
-            attachHelpNode(bounds);
-        }
-    }
-
-    /**
      * Add application-specific hotkey bindings and build the help nodes.
      */
     @Override
@@ -276,22 +235,6 @@ public class FC2D
          * To show/hide the help info, press the H key.
          */
         diMode.bind(asToggleHelp, KeyInput.KEY_F1, KeyInput.KEY_H);
-    }
-
-    /**
-     * Process an action that wasn't handled by the active input mode.
-     *
-     * @param actionString textual description of the action (not null)
-     * @param ongoing true if the action is ongoing, otherwise false
-     * @param tpf time interval between frames (in seconds, &ge;0)
-     */
-    @Override
-    public void onAction(String actionString, boolean ongoing, float tpf) {
-        if (ongoing && actionString.equals(asToggleHelp)) {
-            toggleHelp();
-        } else {
-            super.onAction(actionString, ongoing, tpf);
-        }
     }
 
     /**
@@ -368,41 +311,6 @@ public class FC2D
     }
     // *************************************************************************
     // private methods
-
-    /**
-     * Generate full and minimal versions of the hotkey help. Attach the minimal
-     * one to the GUI scene.
-     *
-     * @param bounds the desired screen coordinates (not null, unaffected)
-     */
-    private void attachHelpNode(Rectangle bounds) {
-        Validate.nonNull(bounds, "bounds");
-
-        InputMode inputMode = getDefaultInputMode();
-        float extraSpace = 20f;
-        helpNode = HelpUtils.buildNode(inputMode, bounds, guiFont, extraSpace);
-        helpNode.move(0f, 0f, 1f); // move (slightly) to the front
-
-        InputMode dummyMode = new InputMode("dummy") {
-            @Override
-            protected void defaultBindings() {
-            }
-
-            @Override
-            public void onAction(String s, boolean b, float f) {
-            }
-        };
-        dummyMode.bind(asToggleHelp, KeyInput.KEY_H);
-
-        float width = 100f; // in pixels
-        float height = bounds.height;
-        float x = bounds.x + bounds.width - width;
-        float y = bounds.y;
-        Rectangle dummyBounds = new Rectangle(x, y, width, height);
-
-        minHelpNode = HelpUtils.buildNode(dummyMode, dummyBounds, guiFont, 0f);
-        guiNode.attachChild(minHelpNode);
-    }
 
     /**
      * Initialize the array of rectangular geometries used to visualize cells.
@@ -576,19 +484,6 @@ public class FC2D
                     totalPoints, (totalPoints == 1) ? "" : "s");
 
             stop();
-        }
-    }
-
-    /**
-     * Toggle between the full help node and the minimal one.
-     */
-    private void toggleHelp() {
-        if (helpNode.getParent() == null) {
-            minHelpNode.removeFromParent();
-            guiNode.attachChild(helpNode);
-        } else {
-            helpNode.removeFromParent();
-            guiNode.attachChild(minHelpNode);
         }
     }
 
