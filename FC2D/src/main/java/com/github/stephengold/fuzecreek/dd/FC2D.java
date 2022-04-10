@@ -59,6 +59,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyAsset;
+import jme3utilities.MyString;
 import jme3utilities.Validate;
 import jme3utilities.math.noise.Generator;
 import jme3utilities.ui.AbstractDemo;
@@ -90,6 +91,11 @@ public class FC2D
     final private static Logger logger
             = Logger.getLogger(FC2D.class.getName());
     /**
+     * application name (for the title bar of the app's window)
+     */
+    final private static String applicationName
+            = FC2D.class.getSimpleName();
+     /**
      * name of the input signal used to steer left
      */
     final private static String leftSignalName = "left";
@@ -165,7 +171,8 @@ public class FC2D
      *
      * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String... arguments) {
+    public static void main(String[] arguments) {
+        String title = applicationName + " " + MyString.join(arguments);
         /*
          * Mute the chatty loggers found in some imported packages.
          */
@@ -176,6 +183,7 @@ public class FC2D
         AppSettings appSettings = new AppSettings(true);
         appSettings.setRenderer(AppSettings.LWJGL_OPENGL32);
         appSettings.setResolution(1280, 800);
+        appSettings.setTitle(title); // Customize the window's title bar.
 
         FC2D application = new FC2D();
         application.setSettings(appSettings);
@@ -216,7 +224,7 @@ public class FC2D
     }
 
     /**
-     * Add application-specific hotkey bindings and build the help nodes.
+     * Add application-specific hotkey bindings and override existing ones.
      */
     @Override
     public void moreDefaultBindings() {
