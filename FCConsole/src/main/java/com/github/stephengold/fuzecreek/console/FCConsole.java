@@ -49,7 +49,7 @@ import jme3utilities.Heart;
 import jme3utilities.MyString;
 import jme3utilities.Validate;
 import jme3utilities.math.noise.Generator;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.InputMode;
 import jme3utilities.ui.Signals;
 
@@ -59,7 +59,7 @@ import jme3utilities.ui.Signals;
  * @author Stephen Gold sgold@sonic.net
  */
 public class FCConsole
-        extends AbstractDemo
+        extends AcorusDemo
         implements View {
     // *************************************************************************
     // constants and loggers
@@ -82,7 +82,7 @@ public class FCConsole
      */
     final private static String applicationName
             = FCConsole.class.getSimpleName();
-     /**
+    /**
      * name of the input signal used to steer left
      */
     final private static String leftSignalName = "left";
@@ -130,19 +130,19 @@ public class FCConsole
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize the FCConsole application.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         /*
          * Disable the JME stats display, which was enabled at its creation.
          */
         stateManager.getState(StatsAppState.class).toggleStats();
 
-        super.actionInitializeApplication();
+        super.acorusInit();
         gameState = new GameState(this, generator);
     }
 

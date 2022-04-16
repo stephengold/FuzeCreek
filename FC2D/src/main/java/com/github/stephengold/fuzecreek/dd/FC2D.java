@@ -62,7 +62,7 @@ import jme3utilities.MyAsset;
 import jme3utilities.MyString;
 import jme3utilities.Validate;
 import jme3utilities.math.noise.Generator;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.InputMode;
 import jme3utilities.ui.Signals;
 
@@ -72,7 +72,7 @@ import jme3utilities.ui.Signals;
  * @author Stephen Gold sgold@sonic.net
  */
 public class FC2D
-        extends AbstractDemo
+        extends AcorusDemo
         implements View {
     // *************************************************************************
     // constants and loggers
@@ -95,7 +95,7 @@ public class FC2D
      */
     final private static String applicationName
             = FC2D.class.getSimpleName();
-     /**
+    /**
      * name of the input signal used to steer left
      */
     final private static String leftSignalName = "left";
@@ -191,20 +191,20 @@ public class FC2D
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize the FC2D application.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         viewGenerator = new Generator(99L);
         /*
          * Disable the JME stats display, which was enabled at its creation.
          */
         stateManager.getState(StatsAppState.class).toggleStats();
 
-        super.actionInitializeApplication();
+        super.acorusInit();
         /*
          * Add the status text to the GUI.
          */
