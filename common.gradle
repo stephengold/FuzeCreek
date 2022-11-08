@@ -4,7 +4,7 @@ apply plugin: 'java'
 
 ext {
     // module coordinates of dependencies:
-    acorusCoordinates = 'com.github.stephengold:Acorus:0.9.16'
+    acorusCoordinates = 'com.github.stephengold:Acorus:0.9.17'
     heartCoordinates = 'com.github.stephengold:Heart:8.2.0'
 
     // current versions of libraries:
