@@ -6,11 +6,9 @@ plugins {
     id 'application'
 }
 
-mainClassName = 'com.github.stephengold.fuzecreek.dd.FC2D'
-if (!hasProperty('mainClass')) {
-    ext.mainClass = mainClassName
+application {
+    mainClass = 'com.github.stephengold.fuzecreek.dd.FC2D'
 }
-jar.manifest.attributes('Main-Class': mainClassName)
 
 dependencies {
     implementation acorusCoordinates
