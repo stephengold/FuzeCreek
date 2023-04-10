@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021-2022, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -111,9 +111,8 @@ public class FCConsole
      */
     public static void main(String[] arguments) {
         String title = applicationName + " " + MyString.join(arguments);
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+
+        // Mute the chatty loggers found in some imported packages.
         Heart.setLoggingLevels(Level.WARNING);
 
         generator = new Generator();
@@ -137,9 +136,7 @@ public class FCConsole
      */
     @Override
     public void acorusInit() {
-        /*
-         * Disable the JME stats display, which was enabled at its creation.
-         */
+        // Disable the JME stats display, which was enabled at its creation.
         stateManager.getState(StatsAppState.class).toggleStats();
 
         super.acorusInit();
@@ -157,9 +154,8 @@ public class FCConsole
         diMode.unbind(KeyInput.KEY_S);
         diMode.unbind(KeyInput.KEY_W);
         diMode.unbind(KeyInput.KEY_Z);
-        /*
-         * To steer, press the A and D keys on the keyboard.
-         */
+
+        // To steer, press the A and D keys on the keyboard.
         diMode.bindSignal(leftSignalName, KeyInput.KEY_A, KeyInput.KEY_LEFT);
         diMode.bindSignal(rightSignalName, KeyInput.KEY_D, KeyInput.KEY_RIGHT);
     }

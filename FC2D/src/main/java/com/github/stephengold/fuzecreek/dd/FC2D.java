@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021-2022, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -173,9 +173,8 @@ public class FC2D
      */
     public static void main(String[] arguments) {
         String title = applicationName + " " + MyString.join(arguments);
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+
+        // Mute the chatty loggers found in some imported packages.
         Heart.setLoggingLevels(Level.WARNING);
 
         generator = new Generator();
@@ -199,15 +198,13 @@ public class FC2D
     @Override
     public void acorusInit() {
         viewGenerator = new Generator(99L);
-        /*
-         * Disable the JME stats display, which was enabled at its creation.
-         */
+
+        // Disable the JME stats display, which was enabled at its creation.
         stateManager.getState(StatsAppState.class).toggleStats();
 
         super.acorusInit();
-        /*
-         * Add the status text to the GUI.
-         */
+
+        // Add the status text to the GUI.
         statusText = new BitmapText(guiFont);
         statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusText);
@@ -236,14 +233,12 @@ public class FC2D
         diMode.unbind(KeyInput.KEY_S);
         diMode.unbind(KeyInput.KEY_W);
         diMode.unbind(KeyInput.KEY_Z);
-        /*
-         * To steer, press the A and D keys on the keyboard.
-         */
+
+        // To steer, press the A and D keys on the keyboard.
         diMode.bindSignal(leftSignalName, KeyInput.KEY_A, KeyInput.KEY_LEFT);
         diMode.bindSignal(rightSignalName, KeyInput.KEY_D, KeyInput.KEY_RIGHT);
-        /*
-         * To show/hide the help info, press the H key.
-         */
+
+        // To show/hide the help info, press the H key.
         diMode.bind(asToggleHelp, KeyInput.KEY_F1, KeyInput.KEY_H);
     }
 
@@ -261,9 +256,8 @@ public class FC2D
         for (int rowIndex = firstRow; rowIndex >= lastRow; --rowIndex) {
             updateRow(rowIndex);
         }
-        /*
-         * Implement smooth vertical scrolling.
-         */
+
+        // Implement smooth vertical scrolling.
         float vsFraction = gameState.verticalScrollingFraction();
         float yOffset = (vsFraction - 1f) * cellHeight;
         verticalScrollingNode.setLocalTranslation(0f, yOffset, 0f);
@@ -401,7 +395,7 @@ public class FC2D
 
         int displayWidth = guiCamera.getWidth();
         cellWidth = displayWidth / numColumns;
-//        System.out.print("cell w=" + cellWidth + " h=" + cellHeight);
+        //System.out.print("cell w=" + cellWidth + " h=" + cellHeight);
     }
 
     /**

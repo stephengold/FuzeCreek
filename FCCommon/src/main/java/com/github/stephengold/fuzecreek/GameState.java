@@ -269,9 +269,8 @@ public class GameState {
         nextAdvanceMillis += advanceMillis;
 
         Row raftRow = rows.get(raftRowIndex);
-        /*
-         * Process all collections and collisions.
-         */
+
+        // Process all collections and collisions.
         int x = raftLeftX - 1;
         Cell cell = raftRow.findCell(x);
         cell.collect();
@@ -285,9 +284,8 @@ public class GameState {
         x = raftRightX + 1;
         cell = raftRow.findCell(x);
         cell.collect();
-        /*
-         * Add a Row to maintain lookahead.
-         */
+
+        // Add a Row to maintain lookahead.
         int appendRowIndex = raftRowIndex + numDownstreamRows;
         addRow(appendRowIndex);
         /*
