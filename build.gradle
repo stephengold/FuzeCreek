@@ -7,3 +7,9 @@ plugins {
 subprojects {
     apply from: rootProject.file('common.gradle')
 }
+
+tasks.register('checkstyle') {
+    dependsOn ':FC2D:checkstyleMain', ':FCCommon:checkstyleMain', \
+            ':FCConsole:checkstyleMain'
+    description 'Checks the style of all Java sourcecode.'
+}
