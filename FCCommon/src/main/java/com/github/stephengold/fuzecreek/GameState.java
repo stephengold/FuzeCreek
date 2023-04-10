@@ -145,18 +145,18 @@ public class GameState {
         this.view = view;
         this.generator = generator;
 
-        isOver = null;
-        numAdvances = 0;
-        numRemainingPatches = 20;
-        raftLeftX = -raftWidth / 2;
-        raftRowIndex = numUpstreamRows;
-        totalPoints = 0;
-        advanceMillis = 400L;
-        startTime = System.currentTimeMillis();
-        nextAdvanceMillis = startTime + advanceMillis;
+        this.isOver = null;
+        this.numAdvances = 0;
+        this.numRemainingPatches = 20;
+        this.raftLeftX = -raftWidth / 2;
+        this.raftRowIndex = numUpstreamRows;
+        this.totalPoints = 0;
+        this.advanceMillis = 400L;
+        this.startTime = System.currentTimeMillis();
+        this.nextAdvanceMillis = startTime + advanceMillis;
 
         int numVisibleRows = countVisibleRows();
-        rows = new HashMap<>(numVisibleRows);
+        this.rows = new HashMap<>(numVisibleRows);
         for (int rowIndex = 0; rowIndex < numVisibleRows; ++rowIndex) {
             addRow(rowIndex);
         }
@@ -266,7 +266,7 @@ public class GameState {
         raftLeftX += deltaX;
         ++raftRowIndex;
         scorePoints(advancePoints);
-        nextAdvanceMillis += advanceMillis;
+        this.nextAdvanceMillis += advanceMillis;
 
         Row raftRow = rows.get(raftRowIndex);
 
@@ -296,7 +296,7 @@ public class GameState {
         rows.remove(purgeRowIndex);
 
         if (isOver != null) {
-            endTime = System.currentTimeMillis();
+            this.endTime = System.currentTimeMillis();
         }
 
         assert rows.keySet().size() == countVisibleRows();
@@ -311,9 +311,9 @@ public class GameState {
      */
     public void consumePatches(int numPatches) {
         if (numRemainingPatches > numPatches) {
-            numRemainingPatches -= numPatches;
+            this.numRemainingPatches -= numPatches;
         } else {
-            numRemainingPatches = 0;
+            this.numRemainingPatches = 0;
             terminate(Cause.SANK);
         }
     }
@@ -434,7 +434,7 @@ public class GameState {
      * negative)
      */
     public void scorePoints(int numPoints) {
-        totalPoints += numPoints;
+        this.totalPoints += numPoints;
     }
 
     /**
@@ -443,7 +443,7 @@ public class GameState {
      * @param millis the desired interval (in milliseconds, &gt;0)
      */
     public void setAdvanceMillis(long millis) {
-        advanceMillis = millis;
+        this.advanceMillis = millis;
     }
 
     /**
@@ -452,7 +452,7 @@ public class GameState {
      * @param cause why the game is terminating
      */
     public void terminate(Cause cause) {
-        isOver = cause;
+        this.isOver = cause;
     }
 
     /**
