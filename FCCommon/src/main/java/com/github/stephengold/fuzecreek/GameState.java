@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -450,6 +450,8 @@ public class GameState {
 
     /**
      * Cause the game to end ... after the current/next advance!
+     *
+     * @param cause why the game is terminating
      */
     public void terminate(Cause cause) {
         isOver = cause;

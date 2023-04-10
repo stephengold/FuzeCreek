@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ public interface View {
     /**
      * Callback to initialize the display information of a new Cell.
      *
-     * @param cell the Cell to modify (not null)
+     * @param newCell the Cell to modify (not null)
      */
     void initializeCellViewData(Cell newCell);
 }
