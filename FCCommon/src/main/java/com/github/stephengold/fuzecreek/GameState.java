@@ -174,7 +174,8 @@ public class GameState {
         assert !rows.containsKey(rowIndex);
         assert rowIndex == 0 || rows.containsKey(rowIndex - 1);
 
-        float rockProbability, mineProbability;
+        float rockProbability;
+        float mineProbability;
         int numClearRows = numUpstreamRows + 3;
         if (rowIndex < numClearRows) {
             /*
@@ -192,7 +193,11 @@ public class GameState {
             mineProbability = Math.min(0.0001f * rowIndex, 0.5f);
         }
 
-        int creekWidth, leftBankX, rightBankX, leftDeltaX, rightDeltaX;
+        int creekWidth;
+        int leftBankX;
+        int rightBankX;
+        int leftDeltaX;
+        int rightDeltaX;
         int numFunnelRows = (maxCreekWidth - minCreekWidth) / 2;
         assert numFunnelRows > 0 : numFunnelRows;
         if (rowIndex < numFunnelRows) {
