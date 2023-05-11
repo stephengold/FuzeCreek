@@ -264,8 +264,8 @@ public class FCConsole
      */
     private static void printlnWithRaft(Row row, int leftMarginX,
             int rightMarginX) {
-        int raftLeftX = gameState.raftLeftX();
-        int raftRightX = gameState.raftRightX();
+        int raftLeftX = gameState.raftLeftColumn();
+        int raftRightX = gameState.raftRightColumn();
 
         for (int x = leftMarginX; x <= rightMarginX; ++x) {
             char character;
@@ -349,7 +349,7 @@ public class FCConsole
         int firstRow = gameState.firstRowIndex(); // highest index, print first
         int lastRow = gameState.lastRowIndex(); // lowest index, print last
         int raftRowIndex = gameState.raftRowIndex();
-        int leftMarginX = gameState.raftLeftX() - numColumns / 2;
+        int leftMarginX = gameState.raftLeftColumn() - numColumns / 2;
         int rightMarginX = leftMarginX + numColumns - 1;
 
         PrintStream console = System.out;

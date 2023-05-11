@@ -407,18 +407,18 @@ public class GameState {
     /**
      * Locate the left edge of the raft.
      *
-     * @return the world X coordinate
+     * @return the column index
      */
-    public int raftLeftX() {
+    public int raftLeftColumn() {
         return raftLeftX;
     }
 
     /**
      * Locate the right edge of the raft.
      *
-     * @return the world X coordinate
+     * @return the column index
      */
-    public int raftRightX() {
+    public int raftRightColumn() {
         int result = raftLeftX + raftWidth - 1;
         return result;
     }
