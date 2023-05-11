@@ -233,12 +233,14 @@ public class FC2D
         diMode.unbind(KeyInput.KEY_S);
         diMode.unbind(KeyInput.KEY_W);
         diMode.unbind(KeyInput.KEY_Z);
-
-        // To steer, press the A and D keys on the keyboard.
+        /*
+         * To steer, press the A and D keys on the keyboard,
+         * or the left and right arrow keys.
+         */
         diMode.bindSignal(leftSignalName, KeyInput.KEY_A, KeyInput.KEY_LEFT);
         diMode.bindSignal(rightSignalName, KeyInput.KEY_D, KeyInput.KEY_RIGHT);
 
-        // To show/hide the help info, press the H key.
+        // To show/hide the help info, press the F1 key or the H key.
         diMode.bind(asToggleHelp, KeyInput.KEY_F1, KeyInput.KEY_H);
     }
 
@@ -249,6 +251,7 @@ public class FC2D
      */
     @Override
     public void simpleUpdate(float tpf) {
+        // super.simpleUpdate() skipped to avoid SignalTracker warnings
         updateStatusText();
 
         int firstRow = gameState.firstRowIndex(); // highest index
