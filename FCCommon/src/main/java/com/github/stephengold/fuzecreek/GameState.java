@@ -93,7 +93,7 @@ public class GameState {
      */
     private int numRemainingPatches;
     /**
-     * world X coordinate of the left edge of the player's raft
+     * index of the column containing of the left edge of the player's raft
      */
     private int raftLeftX;
     /**
