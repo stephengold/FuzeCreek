@@ -141,6 +141,7 @@ public class FCConsole
 
         super.acorusInit();
         gameState = new GameState(this, generator);
+        gameState.addAllRows();
     }
 
     /**

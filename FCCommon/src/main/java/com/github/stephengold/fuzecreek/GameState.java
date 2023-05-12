@@ -157,12 +157,19 @@ public class GameState {
 
         int numVisibleRows = countVisibleRows();
         this.rows = new HashMap<>(numVisibleRows);
+    }
+    // *************************************************************************
+    // new methods exposed
+
+    /**
+     * Initialize all the rows.
+     */
+    public void addAllRows() {
+        int numVisibleRows = countVisibleRows();
         for (int rowIndex = 0; rowIndex < numVisibleRows; ++rowIndex) {
             addRow(rowIndex);
         }
     }
-    // *************************************************************************
-    // new methods exposed
 
     /**
      * Generate a Row and add it to this game.
