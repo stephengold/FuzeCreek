@@ -161,7 +161,8 @@ public class FC2D
     /**
      * parent all cell geometries for efficient vertical scrolling
      */
-    private static Node verticalScrollingNode;
+    final private static Node verticalScrollingNode
+            = new Node("vertical scrolling");
     // *************************************************************************
     // new methods exposed
 
@@ -213,7 +214,6 @@ public class FC2D
         statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusText);
 
-        verticalScrollingNode = new Node("vertical scrolling");
         guiNode.attachChild(verticalScrollingNode);
 
         initializeCellSizes();
