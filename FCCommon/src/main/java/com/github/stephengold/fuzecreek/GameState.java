@@ -268,7 +268,7 @@ public class GameState {
         assert isOver == null : isOver;
 
         ++numAdvances;
-        raftLeftX += deltaX;
+        this.raftLeftX += deltaX;
         ++raftRowIndex;
         scorePoints(advancePoints);
         this.nextAdvanceMillis += advanceMillis;
