@@ -324,7 +324,7 @@ public class FC2D
      * Initialize the array of rectangular geometries used to visualize cells.
      */
     private static void initializeCellGeometries() {
-        int numRows = GameState.countVisibleRows();
+        int numRows = gameState.countVisibleRows();
         cellGeometries = new Geometry[numRows][];
 
         Mesh mesh = new Quad(cellWidth, cellHeight);
@@ -394,7 +394,7 @@ public class FC2D
     private void initializeCellSizes() {
         Camera guiCamera = guiViewPort.getCamera();
         int displayHeight = guiCamera.getHeight();
-        int numRows = GameState.countVisibleRows();
+        int numRows = gameState.countVisibleRows();
         cellHeight = displayHeight / (numRows - 1); // 2 rows partially hidden
 
         int displayWidth = guiCamera.getWidth();
