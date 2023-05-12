@@ -260,7 +260,7 @@ public class FC2D
      */
     @Override
     public void simpleUpdate(float tpf) {
-        // super.simpleUpdate() skipped to avoid SignalTracker warnings
+        super.simpleUpdate(tpf);
         updateStatusText();
 
         int firstRow = gameState.firstRowIndex(); // highest index
