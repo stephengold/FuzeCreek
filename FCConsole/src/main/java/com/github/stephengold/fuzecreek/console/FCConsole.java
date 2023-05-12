@@ -157,8 +157,10 @@ public class FCConsole
         diMode.unbind(KeyInput.KEY_S);
         diMode.unbind(KeyInput.KEY_W);
         diMode.unbind(KeyInput.KEY_Z);
-
-        // To steer, press the A and D keys on the keyboard.
+        /*
+         * To steer, press the A and D keys on the keyboard,
+         * or the left and right arrow keys.
+         */
         diMode.bindSignal(leftSignalName, KeyInput.KEY_A, KeyInput.KEY_LEFT);
         diMode.bindSignal(rightSignalName, KeyInput.KEY_D, KeyInput.KEY_RIGHT);
     }
