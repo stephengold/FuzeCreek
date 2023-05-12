@@ -212,11 +212,14 @@ public class FC2D
         verticalScrollingNode = new Node("vertical scrolling");
         guiNode.attachChild(verticalScrollingNode);
 
-        gameState = new GameState(this, generator);
+        int numDownstreamRows = 23;
+        gameState = new GameState(this, generator, numDownstreamRows);
+
         initializeCellSizes();
         initializeCellGeometries();
         initializeCellMaterials();
         gameState.addAllRows();
+
         initializeRaftGeometry();
 
         ColorRGBA dryLandColor = new ColorRGBA(0.4f, 0.2f, 0.1f, 1f);

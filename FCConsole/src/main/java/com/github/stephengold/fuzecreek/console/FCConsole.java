@@ -140,7 +140,8 @@ public class FCConsole
         stateManager.getState(StatsAppState.class).toggleStats();
 
         super.acorusInit();
-        gameState = new GameState(this, generator);
+        int numDownstreamRows = 23;
+        gameState = new GameState(this, generator, numDownstreamRows);
         gameState.addAllRows();
     }
 

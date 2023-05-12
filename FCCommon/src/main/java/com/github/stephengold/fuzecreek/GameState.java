@@ -57,11 +57,7 @@ public class GameState {
      */
     final public static int minCreekWidth = 10;
     /**
-     * number of rows visible downstream of the raft
-     */
-    final private static int numDownstreamRows = 23;
-    /**
-     * number of rows visible upstream of the raft
+     * number of visible rows upstream of (behind) the raft
      */
     final private static int numUpstreamRows = 2;
     /**
@@ -89,11 +85,15 @@ public class GameState {
      */
     private int numAdvances;
     /**
+     * number of visible rows downstream (ahead) of the raft
+     */
+    final private int numDownstreamRows;
+    /**
      * number of patches in the player's inventory (&ge;0)
      */
     private int numRemainingPatches;
     /**
-     * index of the column containing of the left edge of the player's raft
+     * world X coordinate of the left edge of the player's raft
      */
     private int raftLeftX;
     /**
@@ -137,16 +137,20 @@ public class GameState {
      *
      * @param view the desired visualization (not null)
      * @param generator the pseudo-random generator to use (not null)
+     * @param numDownstreamRows the number of visible rows downstream (ahead) of
+     * the raft (&gt;0)
      */
-    public GameState(View view, Generator generator) {
+    public GameState(View view, Generator generator, int numDownstreamRows) {
         Validate.nonNull(view, "game view");
         Validate.nonNull(generator, "generator");
+        Validate.positive(numDownstreamRows, "number of downstream rows");
 
         this.view = view;
         this.generator = generator;
 
         this.isOver = null;
         this.numAdvances = 0;
+        this.numDownstreamRows = numDownstreamRows;
         this.numRemainingPatches = 20;
         this.raftLeftX = -raftWidth / 2;
         this.raftRowIndex = numUpstreamRows;
