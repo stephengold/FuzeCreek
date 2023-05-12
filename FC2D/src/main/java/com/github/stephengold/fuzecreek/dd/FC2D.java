@@ -164,6 +164,15 @@ public class FC2D
     final private static Node verticalScrollingNode
             = new Node("vertical scrolling");
     // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate an AcorusDemo without a FlyCamAppState.
+     */
+    private FC2D() {
+        super(new StatsAppState());
+    }
+    // *************************************************************************
     // new methods exposed
 
     /**
@@ -233,11 +242,6 @@ public class FC2D
     @Override
     public void moreDefaultBindings() {
         InputMode diMode = getDefaultInputMode();
-        diMode.unbind(KeyInput.KEY_C);
-        diMode.unbind(KeyInput.KEY_Q);
-        diMode.unbind(KeyInput.KEY_S);
-        diMode.unbind(KeyInput.KEY_W);
-        diMode.unbind(KeyInput.KEY_Z);
         /*
          * To steer, press the A and D keys on the keyboard,
          * or the left and right arrow keys.
