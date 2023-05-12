@@ -433,7 +433,7 @@ public class FC2D
      * Convert a deltaX value to a name.
      *
      * @param deltaX the value to convert (-1, 0, or +1)
-     * @return a string of text
+     * @return a string of text (not null, not empty)
      */
     private static String mpz(int deltaX) {
         switch (deltaX) {
