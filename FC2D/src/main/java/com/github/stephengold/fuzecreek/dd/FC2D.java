@@ -88,8 +88,7 @@ public class FC2D
     /**
      * message logger for this class
      */
-    final private static Logger logger
-            = Logger.getLogger(FC2D.class.getName());
+    final private static Logger logger = Logger.getLogger(FC2D.class.getName());
     /**
      * application name (for the title bar of the app's window)
      */
