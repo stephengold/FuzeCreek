@@ -136,12 +136,13 @@ public class FCConsole
      */
     @Override
     public void acorusInit() {
+        int numDownstreamRows = 23;
+        gameState = new GameState(this, generator, numDownstreamRows);
+
         // Disable the JME stats display, which was enabled at its creation.
         stateManager.getState(StatsAppState.class).toggleStats();
 
         super.acorusInit();
-        int numDownstreamRows = 23;
-        gameState = new GameState(this, generator, numDownstreamRows);
         gameState.addAllRows();
     }
 

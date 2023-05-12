@@ -200,6 +200,9 @@ public class FC2D
     public void acorusInit() {
         viewGenerator = new Generator(99L);
 
+        int numDownstreamRows = 23;
+        gameState = new GameState(this, generator, numDownstreamRows);
+
         // Disable the JME stats display, which was enabled at its creation.
         stateManager.getState(StatsAppState.class).toggleStats();
 
@@ -212,9 +215,6 @@ public class FC2D
 
         verticalScrollingNode = new Node("vertical scrolling");
         guiNode.attachChild(verticalScrollingNode);
-
-        int numDownstreamRows = 23;
-        gameState = new GameState(this, generator, numDownstreamRows);
 
         initializeCellSizes();
         initializeCellGeometries();
