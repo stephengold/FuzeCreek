@@ -504,7 +504,7 @@ public class FC2D
         int displayRow = rowIndex - gameState.lastRowIndex();
         Geometry[] geometries = cellGeometries[displayRow];
 
-        int leftMarginX = gameState.raftLeftColumn() - numColumns / 2;
+        int leftMarginX = gameState.raftLeftX() - numColumns / 2;
         for (int column = 0; column < numColumns; ++column) {
             int x = column + leftMarginX;
             Cell cell = row.findCell(x);
