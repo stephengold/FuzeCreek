@@ -518,8 +518,10 @@ public class FC2D
             int x = column + leftMarginX;
             Cell cell = row.findCell(x);
 
-            Material material = null;
-            if (cell != null) {
+            Material material;
+            if (cell == null) {
+                material = null;
+            } else {
                 material = (Material) cell.getViewData();
             }
 
