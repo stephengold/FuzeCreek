@@ -266,7 +266,7 @@ final public class FC2D
         int firstRow = gameState.firstRowIndex(); // highest index
         int lastRow = gameState.lastRowIndex(); // lowest index
         for (int rowIndex = firstRow; rowIndex >= lastRow; --rowIndex) {
-            updateRow(rowIndex);
+            updateRowCells(rowIndex);
         }
 
         // Implement smooth vertical scrolling.
@@ -508,7 +508,7 @@ final public class FC2D
      *
      * @param rowIndex which row to visualize (&ge;0)
      */
-    private static void updateRow(int rowIndex) {
+    private static void updateRowCells(int rowIndex) {
         Row row = gameState.findRow(rowIndex);
         int displayRow = rowIndex - gameState.lastRowIndex();
         Geometry[] geometries = cellGeometries[displayRow];
