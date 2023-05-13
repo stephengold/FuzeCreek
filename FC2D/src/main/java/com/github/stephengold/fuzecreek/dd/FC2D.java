@@ -218,7 +218,7 @@ public class FC2D
 
         super.acorusInit();
 
-        // Add the status text to the GUI.
+        // Attach the status text to the GUI node.
         statusText = new BitmapText(guiFont);
         statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusText);
@@ -534,7 +534,7 @@ public class FC2D
     }
 
     /**
-     * Update the status text in the GUI.
+     * Update the status text in the GUI viewport.
      */
     private static void updateStatusText() {
         int points = gameState.totalPoints();
