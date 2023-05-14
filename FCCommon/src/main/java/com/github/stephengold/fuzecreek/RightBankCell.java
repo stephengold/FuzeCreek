@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -42,12 +42,12 @@ public class RightBankCell extends BankCell {
      * Instantiate a RightBankCell without any display information.
      *
      * @param row the Row to contain the Cell (not null)
-     * @param worldX the desired world X coordinate (may be negative)
+     * @param mapX the desired map X coordinate (may be negative)
      * @param downstreamDeltaX the relative position of the right bank in the
      * downstream Row (-1, 0, or +1)
      */
-    RightBankCell(Row row, int worldX, int downstreamDeltaX) {
-        super(row, worldX, downstreamDeltaX);
+    RightBankCell(Row row, int mapX, int downstreamDeltaX) {
+        super(row, mapX, downstreamDeltaX);
     }
     // *************************************************************************
     // BankCell methods
@@ -56,7 +56,7 @@ public class RightBankCell extends BankCell {
      * Determine the change in location of the bank, from the upstream Row to
      * this cell's Row.
      *
-     * @return the increase in the world X coordinate (-1, 0, or +1)
+     * @return the increase in the map X coordinate (-1, 0, or +1)
      */
     @Override
     public int upstreamDeltaX() {

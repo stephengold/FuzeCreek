@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -42,10 +42,10 @@ public class MineCell extends Cell {
      * Instantiate a MineCell without any display information.
      *
      * @param row the Row to contain the Cell (not null)
-     * @param worldX the desired world X coordinate (may be negative)
+     * @param mapX the desired map X coordinate (may be negative)
      */
-    MineCell(Row row, int worldX) {
-        super(row, worldX);
+    MineCell(Row row, int mapX) {
+        super(row, mapX);
     }
     // *************************************************************************
     // Cell methods
@@ -56,7 +56,7 @@ public class MineCell extends Cell {
      */
     @Override
     public void collect() {
-        row.collectCell(worldX);
+        row.collectCell(mapX);
         row.gameState.scorePoints(20);
     }
 

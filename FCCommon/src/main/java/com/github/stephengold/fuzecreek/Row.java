@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -60,11 +60,11 @@ public class Row {
      */
     final public GameState gameState;
     /**
-     * world X coordinate of the left bank (may be negative)
+     * map X coordinate of the left bank (may be negative)
      */
     final public int leftBankX;
     /**
-     * world X coordinate of the right bank (may be negative)
+     * map X coordinate of the right bank (may be negative)
      */
     final public int rightBankX;
     /**
@@ -85,10 +85,9 @@ public class Row {
      * @param rowIndex the desired row index (&ge;0)
      * @param numCells the desired number of cells (&ge; minWidth + 4)
      * @param x0Index the index of the cell with X=0 (&ge; 2 - leftBankX)
-     * @param leftBankX the world X coordinate of the left bank (&lt;
-     * rightBankX, &ge;-x0Index)
-     * @param rightBankX the world X coordinate of the right bank (&gt;
-     * leftBankX)
+     * @param leftBankX the map X coordinate of the left bank (&lt; rightBankX,
+     * &ge;-x0Index)
+     * @param rightBankX the map X coordinate of the right bank (&gt; leftBankX)
      * @param leftDeltaX the relative position of the left bank in the
      * downstream Row (-1, 0, or +1)
      * @param rightDeltaX the relative position of the right bank in the
@@ -156,11 +155,11 @@ public class Row {
     /**
      * Collect the Cell at the specified X coordinate.
      *
-     * @param worldX the world X coordinate of the Cell (may be negative)
+     * @param mapX the map X coordinate of the Cell (may be negative)
      */
-    public void collectCell(int worldX) {
-        int cellIndex = worldX + x0Index;
-        Cell newCell = new WaterOnlyCell(this, worldX);
+    public void collectCell(int mapX) {
+        int cellIndex = mapX + x0Index;
+        Cell newCell = new WaterOnlyCell(this, mapX);
         cells[cellIndex] = newCell;
 
         gameState.view.initializeCellViewData(newCell);
@@ -169,11 +168,11 @@ public class Row {
     /**
      * Access the cell at the specified X coordinate.
      *
-     * @param x the world X coordinate coordinate (may be negative)
+     * @param mapX the map X coordinate coordinate (may be negative)
      * @return the pre-existing instance, or null if none
      */
-    public Cell findCell(int x) {
-        int cellIndex = x + x0Index;
+    public Cell findCell(int mapX) {
+        int cellIndex = mapX + x0Index;
 
         Cell result = null;
         if (cellIndex >= 0 && cellIndex < cells.length) {

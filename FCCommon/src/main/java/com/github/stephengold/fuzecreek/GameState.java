@@ -37,6 +37,11 @@ import jme3utilities.math.noise.Generator;
 
 /**
  * State of a rafting game with explosives.
+ * <p>
+ * Row indices increase without limit, in the downstream direction.
+ * <p>
+ * In "map coordinates", X increases to the player's right, assuming they are
+ * facing downstream.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -93,7 +98,7 @@ public class GameState {
      */
     private int numRemainingPatches;
     /**
-     * world X coordinate of the left edge of the player's raft
+     * map X coordinate of the left edge of the player's raft
      */
     private int raftLeftX;
     /**
@@ -270,7 +275,7 @@ public class GameState {
      * Advance the simulation, causing the raft to drift forward one row and
      * optionally sideways by one cell.
      *
-     * @param deltaX the desired raft movement (in the world +X direction,
+     * @param deltaX the desired raft movement (in the map's +X direction,
      * &ge;-1, &le;+1)
      * @return enum value if the game is over, otherwise null
      */
@@ -418,7 +423,7 @@ public class GameState {
     /**
      * Locate the left edge of the raft.
      *
-     * @return the world X coordinate
+     * @return the map X coordinate
      */
     public int raftLeftX() {
         return raftLeftX;
@@ -427,7 +432,7 @@ public class GameState {
     /**
      * Locate the right edge of the raft.
      *
-     * @return the world X coordinate
+     * @return the map X coordinate
      */
     public int raftRightX() {
         int result = raftLeftX + raftWidth - 1;

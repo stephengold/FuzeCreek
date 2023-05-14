@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -42,9 +42,9 @@ public class WaterOnlyCell extends Cell {
      * Instantiate a WaterOnlyCell without any display information.
      *
      * @param row the Row to contain the Cell (not null)
-     * @param worldX the desired world X coordinate (may be negative)
+     * @param mapX the desired map X coordinate (may be negative)
      */
-    WaterOnlyCell(Row row, int worldX) {
-        super(row, worldX);
+    WaterOnlyCell(Row row, int mapX) {
+        super(row, mapX);
     }
 }

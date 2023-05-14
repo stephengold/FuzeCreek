@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -41,9 +41,9 @@ abstract public class Cell {
     // fields
 
     /**
-     * world X coordinate (may be negative)
+     * map X coordinate (may be negative)
      */
-    final protected int worldX;
+    final protected int mapX;
     /**
      * information used to visualize this Cell
      */
@@ -59,13 +59,13 @@ abstract public class Cell {
      * Instantiate a Cell without any display information.
      *
      * @param row the Row to contain the Cell (not null)
-     * @param worldX the desired world X coordinate (may be negative)
+     * @param mapX the desired map X coordinate (may be negative)
      */
-    protected Cell(Row row, int worldX) {
+    protected Cell(Row row, int mapX) {
         Validate.nonNull(row, "row");
 
         this.row = row;
-        this.worldX = worldX;
+        this.mapX = mapX;
     }
     // *************************************************************************
     // new methods added
