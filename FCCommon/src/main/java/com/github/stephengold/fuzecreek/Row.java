@@ -121,7 +121,7 @@ public class Row {
         this.rightBankX = rightBankX;
         this.x0Index = x0Index;
 
-        cells = new Cell[numCells];
+        this.cells = new Cell[numCells];
 
         float nonEmptyProbability = rockProbability + mineProbability;
         for (int cellIndex = 0; cellIndex < numCells; ++cellIndex) {
@@ -145,7 +145,7 @@ public class Row {
                 }
             }
 
-            cells[cellIndex] = newCell;
+            this.cells[cellIndex] = newCell;
             gameState.view.initializeCellViewData(newCell);
         }
     }
@@ -160,7 +160,7 @@ public class Row {
     public void collectCell(int mapX) {
         int cellIndex = mapX + x0Index;
         Cell newCell = new WaterOnlyCell(this, mapX);
-        cells[cellIndex] = newCell;
+        this.cells[cellIndex] = newCell;
 
         gameState.view.initializeCellViewData(newCell);
     }
