@@ -362,7 +362,7 @@ public class GameState {
      *
      * @return the count (&ge;0)
      */
-    public int countVisibleRows() {
+    final public int countVisibleRows() {
         int result = numDownstreamRows + numUpstreamRows + 1;
         return result;
     }
