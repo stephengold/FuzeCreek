@@ -38,7 +38,7 @@ public interface View {
     /**
      * Callback to initialize the display information of a new Cell.
      *
-     * @param newCell the Cell to modify (not null)
+     * @param newCell the new Cell (not null, unaffected)
      */
     void initializeCellViewData(Cell newCell);
 }

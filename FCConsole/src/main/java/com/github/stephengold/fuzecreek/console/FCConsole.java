@@ -186,13 +186,13 @@ public class FCConsole
      * In the console version, the display information consists of an ASCII
      * Character that's printed to System.out.
      *
-     * @param cell the Cell to modify (not null)
+     * @param cell the new Cell (not null, unaffected)
      */
     @Override
     public void initializeCellViewData(Cell cell) {
         Validate.nonNull(cell, "cell");
-        char character;
 
+        char character;
         if (cell instanceof DryLandCell) {
             character = ':';
         } else if (cell instanceof WaterOnlyCell) {

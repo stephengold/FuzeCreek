@@ -287,13 +287,13 @@ final public class FC2D
      * The display information consists of a Material that's applied to a quad
      * mesh in the GUI view.
      *
-     * @param cell the Cell to modify (not null)
+     * @param cell the new Cell (not null, unaffected)
      */
     @Override
     public void initializeCellViewData(Cell cell) {
         Validate.nonNull(cell, "cell");
-        Material material;
 
+        Material material;
         if (cell instanceof DryLandCell) {
             material = null; // relies on the background color of the ViewPort
 
