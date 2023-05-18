@@ -226,8 +226,8 @@ final public class FC2D
         guiNode.attachChild(verticalScrollingNode);
 
         initializeCellSizes();
-        initializeCellGeometries();
         initializeCellMaterials();
+        initializeCellGeometries();
         gameState.addAllRows();
 
         initializeRaftGeometry();
