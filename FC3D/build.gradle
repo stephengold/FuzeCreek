@@ -1,0 +1,24 @@
+// Note: "common.gradle" in the root project contains additional initialization
+//   for this project. This initialization is applied in the "build.gradle"
+//   of the root project.
+
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.github.stephengold.fuzecreek.ddd.FC3D'
+}
+
+dependencies {
+    implementation acorusCoordinates
+    implementation 'com.github.stephengold:SkyControl:1.0.4'
+    runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jme3Version
+
+    // FC3D doesn't use jme3-jogg nor jme3-plugins
+    //  -- they are included solely to avoid warnings from AssetConfig.
+    runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jme3Version
+    runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jme3Version
+
+    implementation project(':FCCommon')
+}
