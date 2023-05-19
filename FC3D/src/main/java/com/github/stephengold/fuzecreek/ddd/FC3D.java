@@ -41,6 +41,7 @@ import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.FastMath;
 import com.jme3.math.Plane;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
@@ -55,6 +56,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyAsset;
+import jme3utilities.MyMesh;
 import jme3utilities.MyString;
 import jme3utilities.Validate;
 import jme3utilities.debug.Dumper;
@@ -248,6 +250,7 @@ final public class FC3D
         generateMaterials();
         initializeCellGeometries();
         initializeRowGeometries();
+        addMargins();
         gameState.addAllRows();
 
         initializeRaftGeometry();
@@ -373,6 +376,41 @@ final public class FC3D
         mainLight = new DirectionalLight(direction);
         rootSpatial.addLight(mainLight);
         mainLight.setName("main");
+    }
+
+    /**
+     * Add 2 large geometries to visualize dry land outside the cell array.
+     */
+    private void addMargins() {
+        // dimensions of the water mesh
+        int numRows = gameState.countVisibleRows();
+        float xWidth = numRows * cellZWidth;
+        float zWidth = numColumns * cellZWidth;
+
+        float far = cam.getFrustumFar();
+        Quaternion rotateX
+                = new Quaternion().fromAngles(-FastMath.HALF_PI, 0f, 0f);
+
+        Material material = findMaterial("dry land");
+        assert material != null;
+
+        Mesh leftMesh = new Quad(xWidth, far);
+        leftMesh = MyMesh.subdivideTriangles(leftMesh, 10);
+        Geometry leftGeometry = new Geometry("left margin", leftMesh);
+        verticalScrollingNode.attachChild(leftGeometry);
+
+        leftGeometry.setLocalRotation(rotateX);
+        leftGeometry.setLocalTranslation(0f, dryLandY, 0f);
+        leftGeometry.setMaterial(material);
+
+        Mesh rightMesh = new Quad(far, xWidth);
+        rightMesh = MyMesh.subdivideTriangles(rightMesh, 100);
+        Geometry rightGeometry = new Geometry("right margin", rightMesh);
+        verticalScrollingNode.attachChild(rightGeometry);
+
+        rightGeometry.setLocalRotation(rotateAxes);
+        rightGeometry.setLocalTranslation(0f, dryLandY, zWidth);
+        rightGeometry.setMaterial(material);
     }
 
     /**
