@@ -147,7 +147,7 @@ final public class FC3D
      */
     private static Generator generator;
     /**
-     * rectangular geometries used to visualize land, indexed by display row
+     * geometries used to visualize terrain, indexed by display row
      */
     private static Geometry[] rowGeometries;
     /**
@@ -251,7 +251,7 @@ final public class FC3D
     }
 
     /**
-     * Initialize the library of named materials. Invoke during startup.
+     * Initialize the library of named materials.
      */
     @Override
     public void generateMaterials() {
