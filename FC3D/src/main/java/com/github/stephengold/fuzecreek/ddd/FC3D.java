@@ -243,8 +243,7 @@ final public class FC3D
         rootNode.attachChild(reflectiblesNode);
         rootNode.attachChild(verticalScrollingNode);
 
-        cam.setLocation(new Vector3f(-1f, waterY + 1f, 9f));
-        cam.setRotation(new Quaternion(0.1f, 0.7f, -0.1f, 0.7f));
+        configureCamera();
 
         generateMaterials();
         initializeCellGeometries();
@@ -412,6 +411,14 @@ final public class FC3D
 
         Material material = getWaterMaterial();
         waterGeometry.setMaterial(material);
+    }
+
+    /**
+     * Configure the camera during startup.
+     */
+    private void configureCamera() {
+        cam.setLocation(new Vector3f(-1f, waterY + 1f, 9f));
+        cam.setRotation(new Quaternion(0.1f, 0.7f, -0.1f, 0.7f));
     }
 
     /**
