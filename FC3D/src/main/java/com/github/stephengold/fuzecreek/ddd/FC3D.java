@@ -220,7 +220,7 @@ final public class FC3D
     public void acorusInit() {
         int numDownstreamRows = 125;
         gameState = new GameState(this, generator, numDownstreamRows);
-        //gameState.setAdvanceMillis(999999L); // TODO while debugging
+        //gameState.setAdvanceMillis(999999L); // while debugging
 
         // Disable the JME stats display, which was enabled at its creation.
         stateManager.getState(StatsAppState.class).toggleStats();
@@ -259,15 +259,17 @@ final public class FC3D
         ColorRGBA fogColor = new ColorRGBA(0.8f, 0.7f, 0.6f, opaque);
         Vector2f linearFog = new Vector2f(5f, 30f);
 
+        // dry-land material
         ColorRGBA color = new ColorRGBA(0.4f, 0.2f, 0.1f, opaque);
         Material material = MyAsset.createShadedMaterial(assetManager, color);
-        //material.getAdditionalRenderState().setWireframe(true);
         registerMaterial("dry land", material);
+        //material.getAdditionalRenderState().setWireframe(true); // debugging
 
         material.setBoolean("UseFog", true);
         material.setColor("FogColor", fogColor.clone());
         material.setVector2("LinearFog", linearFog.clone());
 
+        // mine material
         color = new ColorRGBA(1f, 0f, 0f, opaque);
         material = MyAsset.createShadedMaterial(assetManager, color);
         registerMaterial("mine", material);
@@ -293,7 +295,7 @@ final public class FC3D
         // To show/hide the help info, press the F1 key or the H key.
         diMode.bind(asToggleHelp, KeyInput.KEY_F1, KeyInput.KEY_H);
 
-        //diMode.bind("dump", KeyInput.KEY_P); // TODO while debugging
+        //diMode.bind("dump", KeyInput.KEY_P); // while debugging
     }
 
     /**
