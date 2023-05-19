@@ -246,7 +246,7 @@ final public class FC3D
         cam.setLocation(new Vector3f(-1f, waterY + 1f, 9f));
         cam.setRotation(new Quaternion(0.1f, 0.7f, -0.1f, 0.7f));
 
-        initializeCellMaterials();
+        generateMaterials();
         initializeCellGeometries();
         initializeRowGeometries();
         gameState.addAllRows();
@@ -255,6 +255,25 @@ final public class FC3D
         addLighting(rootNode);
         addSky();
         addWater();
+    }
+
+    /**
+     * Initialize the library of named materials. Invoke during startup.
+     */
+    @Override
+    public void generateMaterials() {
+        ColorRGBA color;
+        Material material;
+        float opaque = 1f;
+
+        color = new ColorRGBA(0.4f, 0.2f, 0.1f, opaque);
+        material = MyAsset.createShadedMaterial(assetManager, color);
+        //material.getAdditionalRenderState().setWireframe(true);
+        registerMaterial("dry land", material);
+
+        color = new ColorRGBA(0.2f, 0f, 0f, opaque);
+        material = MyAsset.createShadedMaterial(assetManager, color);
+        registerMaterial("mine", material);
     }
 
     /**
@@ -496,24 +515,6 @@ final public class FC3D
                 rockGeometry.setMaterial(dryLandMaterial);
             }
         }
-    }
-
-    /**
-     * Initialize the materials used to visualize cells.
-     */
-    private void initializeCellMaterials() {
-        ColorRGBA color;
-        Material material;
-        float opaque = 1f;
-
-        color = new ColorRGBA(0.4f, 0.2f, 0.1f, opaque);
-        material = MyAsset.createShadedMaterial(assetManager, color);
-        //material.getAdditionalRenderState().setWireframe(true);
-        registerMaterial("dry land", material);
-
-        color = new ColorRGBA(0.2f, 0f, 0f, opaque);
-        material = MyAsset.createShadedMaterial(assetManager, color);
-        registerMaterial("mine", material);
     }
 
     /**
