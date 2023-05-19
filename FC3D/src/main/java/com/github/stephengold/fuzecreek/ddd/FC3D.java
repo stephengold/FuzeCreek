@@ -479,19 +479,10 @@ final public class FC3D
             waterProcessor = new WaterProcessor(assetManager);
             viewPort.addProcessor(waterProcessor);
 
-            waterProcessor.setDistortionMix(0.01f);
-            waterProcessor.setDistortionScale(0.01f);
-
             Plane surface = new Plane(Vector3f.UNIT_Y, waterY);
             waterProcessor.setPlane(surface);
 
-            // Clip everything below the surface.
-            waterProcessor.setReflectionClippingOffset(0f);
-
             waterProcessor.setReflectionScene(reflectiblesNode);
-            waterProcessor.setWaterDepth(0.1f);
-            waterProcessor.setWaveSpeed(0.03f);
-
             waterProcessor.getMaterial().setName("water");
         }
         Material result = waterProcessor.getMaterial();
