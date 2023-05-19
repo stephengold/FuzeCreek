@@ -268,7 +268,7 @@ final public class FC3D
         material.setColor("FogColor", fogColor.clone());
         material.setVector2("LinearFog", linearFog.clone());
 
-        color = new ColorRGBA(0.2f, 0f, 0f, opaque);
+        color = new ColorRGBA(1f, 0f, 0f, opaque);
         material = MyAsset.createShadedMaterial(assetManager, color);
         registerMaterial("mine", material);
 
@@ -424,6 +424,7 @@ final public class FC3D
 
         skyControl.getSunAndStars().setHour(7f);
         skyControl.getUpdater().setAmbientLight(ambientLight);
+        skyControl.getUpdater().setAmbientMultiplier(0.25f);
         skyControl.getUpdater().setMainLight(mainLight);
         skyControl.setCloudiness(0.4f);
         skyControl.setCloudsYOffset(0.4f);
@@ -440,6 +441,7 @@ final public class FC3D
         float xWidth = numRows * cellZWidth;
         float zWidth = numColumns * cellZWidth;
         Mesh mesh = new Quad(zWidth, xWidth);
+        mesh.scaleTextureCoordinates(new Vector2f(10f, 10f));
         Geometry geometry = new Geometry("WaterGeometry", mesh);
         verticalScrollingNode.attachChild(geometry);
 
@@ -565,7 +567,7 @@ final public class FC3D
         geometry.setLocalTranslation(x, waterY + 0.04f, z);
 
         float opaque = 1f;
-        ColorRGBA color = new ColorRGBA(0.1f, 0.3f, 0.1f, opaque);
+        ColorRGBA color = new ColorRGBA(0.1f, 0.4f, 0.1f, opaque);
         Material material = MyAsset.createShadedMaterial(assetManager, color);
         geometry.setMaterial(material);
     }
