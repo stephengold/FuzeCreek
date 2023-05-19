@@ -147,10 +147,6 @@ final public class FC3D
      */
     private static Generator generator;
     /**
-     * visualize the player's raft
-     */
-    private static Geometry raftGeometry;
-    /**
      * rectangular geometries used to visualize land, indexed by display row
      */
     private static Geometry[] rowGeometries;
@@ -566,7 +562,8 @@ final public class FC3D
      * Initialize the Geometry used to visualize the raft.
      */
     private void initializeRaftGeometry() {
-        raftGeometry = (Geometry) assetManager.loadModel("Models/raft.obj");
+        Geometry raftGeometry
+                = (Geometry) assetManager.loadModel("Models/raft.obj");
         verticalScrollingNode.attachChild(raftGeometry);
 
         raftGeometry.setLocalScale(0.5f * cellZWidth);
