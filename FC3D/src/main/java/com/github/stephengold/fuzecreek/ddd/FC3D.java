@@ -573,6 +573,7 @@ final public class FC3D
         rowGeometries = new Geometry[numRows];
 
         Material material = findMaterial("dry land");
+        assert material != null;
 
         for (int rowIndex = 0; rowIndex < numRows; ++rowIndex) {
             String name = String.format("row[%d]", rowIndex);
