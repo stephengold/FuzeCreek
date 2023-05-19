@@ -562,22 +562,22 @@ final public class FC3D
      * Initialize the Geometry used to visualize the raft.
      */
     private void initializeRaftGeometry() {
-        Geometry raftGeometry
+        Geometry geometry
                 = (Geometry) assetManager.loadModel("Models/raft.obj");
-        verticalScrollingNode.attachChild(raftGeometry);
+        verticalScrollingNode.attachChild(geometry);
 
-        raftGeometry.setLocalScale(0.5f * cellZWidth);
+        geometry.setLocalScale(0.5f * cellZWidth);
 
         int rowIndex = gameState.raftRowIndex();
         int displayRow = rowIndex - gameState.lastRowIndex();
         float x = (displayRow + 1) * cellXWidth;
         float z = 0.5f * (numColumns + 2) * cellZWidth;
-        raftGeometry.setLocalTranslation(x, waterY + 0.04f, z);
+        geometry.setLocalTranslation(x, waterY + 0.04f, z);
 
         float opaque = 1f;
         ColorRGBA color = new ColorRGBA(0.1f, 0.3f, 0.1f, opaque);
         Material material = MyAsset.createShadedMaterial(assetManager, color);
-        raftGeometry.setMaterial(material);
+        geometry.setMaterial(material);
     }
 
     /**
