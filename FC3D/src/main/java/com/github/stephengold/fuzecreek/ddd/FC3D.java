@@ -44,6 +44,7 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.FastMath;
 import com.jme3.math.Plane;
 import com.jme3.math.Quaternion;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
@@ -254,18 +255,26 @@ final public class FC3D
      */
     @Override
     public void generateMaterials() {
-        ColorRGBA color;
-        Material material;
         float opaque = 1f;
+        ColorRGBA fogColor = new ColorRGBA(0.8f, 0.7f, 0.6f, opaque);
+        Vector2f linearFog = new Vector2f(5f, 30f);
 
-        color = new ColorRGBA(0.4f, 0.2f, 0.1f, opaque);
-        material = MyAsset.createShadedMaterial(assetManager, color);
+        ColorRGBA color = new ColorRGBA(0.4f, 0.2f, 0.1f, opaque);
+        Material material = MyAsset.createShadedMaterial(assetManager, color);
         //material.getAdditionalRenderState().setWireframe(true);
         registerMaterial("dry land", material);
+
+        material.setBoolean("UseFog", true);
+        material.setColor("FogColor", fogColor.clone());
+        material.setVector2("LinearFog", linearFog.clone());
 
         color = new ColorRGBA(0.2f, 0f, 0f, opaque);
         material = MyAsset.createShadedMaterial(assetManager, color);
         registerMaterial("mine", material);
+
+        material.setBoolean("UseFog", true);
+        material.setColor("FogColor", fogColor.clone());
+        material.setVector2("LinearFog", linearFog.clone());
     }
 
     /**
