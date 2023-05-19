@@ -562,6 +562,7 @@ final public class FC3D
         float opaque = 1f;
         ColorRGBA color = new ColorRGBA(0.1f, 0.4f, 0.1f, opaque);
         Material material = MyAsset.createShadedMaterial(assetManager, color);
+        material.setName("raft");
         geometry.setMaterial(material);
     }
 
