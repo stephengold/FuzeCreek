@@ -197,6 +197,7 @@ final public class FC3D
         Heart.setLoggingLevels(Level.WARNING);
 
         generator = new Generator();
+        //generator = new Generator(99L); // while debugging
 
         AppSettings appSettings = new AppSettings(true);
         appSettings.setGammaCorrection(true);

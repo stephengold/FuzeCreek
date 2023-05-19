@@ -187,6 +187,7 @@ final public class FC2D
         Heart.setLoggingLevels(Level.WARNING);
 
         generator = new Generator();
+        //generator = new Generator(99L); // while debugging
 
         AppSettings appSettings = new AppSettings(true);
         appSettings.setGammaCorrection(true);
@@ -212,6 +213,7 @@ final public class FC2D
 
         int numDownstreamRows = 23;
         gameState = new GameState(this, generator, numDownstreamRows);
+        //gameState.setAdvanceMillis(999999L); // while debugging
 
         // Disable the JME stats display, which was enabled at its creation.
         stateManager.getState(StatsAppState.class).toggleStats();
