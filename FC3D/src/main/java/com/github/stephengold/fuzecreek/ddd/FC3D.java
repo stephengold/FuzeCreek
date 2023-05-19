@@ -445,7 +445,8 @@ final public class FC3D
      * Configure the camera during startup.
      */
     private void configureCamera() {
-        cam.setLocation(new Vector3f(-1f, waterY + 1f, 9f));
+        float z = (numColumns / 2 + 1) * cellZWidth;
+        cam.setLocation(new Vector3f(-1f, waterY + 1f, z));
         cam.setRotation(new Quaternion(0.1f, 0.7f, -0.1f, 0.7f));
     }
 
@@ -551,7 +552,7 @@ final public class FC3D
         int rowIndex = gameState.raftRowIndex();
         int displayRow = rowIndex - gameState.lastRowIndex();
         float x = (displayRow + 1) * cellXWidth;
-        float z = 0.5f * (numColumns + 2) * cellZWidth;
+        float z = (numColumns / 2 + 1) * cellZWidth;
         geometry.setLocalTranslation(x, waterY + 0.04f, z);
 
         float opaque = 1f;
