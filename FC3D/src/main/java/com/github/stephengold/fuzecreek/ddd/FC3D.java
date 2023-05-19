@@ -430,8 +430,8 @@ final public class FC3D
         int numRows = gameState.countVisibleRows();
         float xWidth = numRows * cellZWidth;
         float zWidth = numColumns * cellZWidth;
-        Mesh waterMesh = new Quad(zWidth, xWidth);
-        Geometry geometry = new Geometry("WaterGeometry", waterMesh);
+        Mesh mesh = new Quad(zWidth, xWidth);
+        Geometry geometry = new Geometry("WaterGeometry", mesh);
         verticalScrollingNode.attachChild(geometry);
 
         geometry.setLocalRotation(rotateAxes);
