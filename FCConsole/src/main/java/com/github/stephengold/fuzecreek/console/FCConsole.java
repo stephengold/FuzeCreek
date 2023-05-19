@@ -71,7 +71,7 @@ public class FCConsole
     /**
      * number of cell columns that can be displayed
      */
-    final private static int numColumns = 40;
+    final private static int numColumns = 75;
     /**
      * message logger for this class
      */
