@@ -237,15 +237,15 @@ final public class FC3D
         rootNode.attachChild(verticalScrollingNode);
 
         configureCamera();
-
         generateMaterials();
+
         initializeCellGeometries();
+        initializeRaftGeometry();
         initializeRowGeometries();
-        addMargins();
         gameState.addAllRows();
 
-        initializeRaftGeometry();
         addLighting(rootNode);
+        addMargins();
         addSky();
         addWater();
     }
