@@ -49,7 +49,6 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
-import com.jme3.scene.shape.CenterQuad;
 import com.jme3.scene.shape.Quad;
 import com.jme3.system.AppSettings;
 import java.util.logging.Level;
@@ -150,11 +149,6 @@ final public class FC3D
      * rectangular geometries used to visualize land, indexed by display row
      */
     private static Geometry[] rowGeometries;
-    /**
-     * rectangular geometries used to visualize cells, indexed by display row
-     * and display column
-     */
-    private static Geometry[][] dryLandGeometries;
     /**
      * geometries used to visualize mines, indexed by display row and display
      * column
@@ -499,7 +493,6 @@ final public class FC3D
      */
     private void initializeCellGeometries() {
         int numRows = gameState.countVisibleRows();
-        dryLandGeometries = new Geometry[numRows][];
         mineGeometries = new Geometry[numRows][];
         rockGeometries = new Geometry[numRows][];
 
@@ -509,7 +502,6 @@ final public class FC3D
         Material mineMaterial = findMaterial("mine");
         assert mineMaterial != null;
 
-        Mesh dryLandMesh = new CenterQuad(cellZWidth, cellXWidth);
         Mesh mineMesh = new Icosphere(2, 0.4f * cellZWidth);
         Mesh rockMesh = new Octahedron(0.4f * cellZWidth, true);
 
@@ -519,26 +511,14 @@ final public class FC3D
         for (int rowIndex = 0; rowIndex < numRows; ++rowIndex) {
             float centerX = (rowIndex + 0.5f) * cellXWidth;
 
-            dryLandGeometries[rowIndex] = new Geometry[numColumns];
             mineGeometries[rowIndex] = new Geometry[numColumns];
             rockGeometries[rowIndex] = new Geometry[numColumns];
 
             for (int column = 0; column < numColumns; ++column) {
                 float centerZ = (column + 0.5f) * cellZWidth;
 
-                // Create a dry land geometry for the cell.
-                String name
-                        = String.format("dryLand[%d][%d]", rowIndex, column);
-                Geometry dryLandGeometry = new Geometry(name, dryLandMesh);
-                verticalScrollingNode.attachChild(dryLandGeometry);
-                dryLandGeometries[rowIndex][column] = dryLandGeometry;
-
-                dryLandGeometry.setLocalRotation(rotateAxes);
-                dryLandGeometry.setLocalTranslation(centerX, dryLandY, centerZ);
-                dryLandGeometry.setMaterial(dryLandMaterial);
-
                 // Create a mine geometry for the cell.
-                name = String.format("mine[%d][%d]", rowIndex, column);
+                String name = String.format("mine[%d][%d]", rowIndex, column);
                 Geometry mineGeometry = new Geometry(name, mineMesh);
                 verticalScrollingNode.attachChild(mineGeometry);
                 mineGeometries[rowIndex][column] = mineGeometry;
@@ -717,17 +697,13 @@ final public class FC3D
 
         int leftMarginZ = gameState.raftLeftX() - numColumns / 2;
         for (int column = 0; column < numColumns; ++column) {
-            Spatial.CullHint cullDryLand;
             Spatial.CullHint cullMine = Spatial.CullHint.Always;
             Spatial.CullHint cullRock = Spatial.CullHint.Always;
 
             int z = column + leftMarginZ;
             Cell cell = row.findCell(z);
-            if (cell == null) {
-                cullDryLand = Spatial.CullHint.Dynamic;
-            } else {
+            if (cell != null) {
                 CellViewData data = (CellViewData) cell.getViewData();
-                cullDryLand = Spatial.CullHint.Always;
                 if (data.hasMine()) {
                     cullMine = Spatial.CullHint.Dynamic;
                 }
@@ -736,7 +712,6 @@ final public class FC3D
                 }
             }
 
-            dryLandGeometries[displayRow][column].setCullHint(cullDryLand);
             mineGeometries[displayRow][column].setCullHint(cullMine);
             rockGeometries[displayRow][column].setCullHint(cullRock);
         }
