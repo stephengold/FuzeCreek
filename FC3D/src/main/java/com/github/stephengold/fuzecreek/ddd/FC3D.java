@@ -431,14 +431,14 @@ final public class FC3D
         float xWidth = numRows * cellZWidth;
         float zWidth = numColumns * cellZWidth;
         Mesh waterMesh = new Quad(zWidth, xWidth);
-        Geometry waterGeometry = new Geometry("WaterGeometry", waterMesh);
-        verticalScrollingNode.attachChild(waterGeometry);
+        Geometry geometry = new Geometry("WaterGeometry", waterMesh);
+        verticalScrollingNode.attachChild(geometry);
 
-        waterGeometry.setLocalRotation(rotateAxes);
-        waterGeometry.setLocalTranslation(0f, waterY, 0f);
+        geometry.setLocalRotation(rotateAxes);
+        geometry.setLocalTranslation(0f, waterY, 0f);
 
         Material material = getWaterMaterial();
-        waterGeometry.setMaterial(material);
+        geometry.setMaterial(material);
     }
 
     /**
