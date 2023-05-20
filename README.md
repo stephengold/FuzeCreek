@@ -155,7 +155,7 @@ Some ideas for future development:
 
 + Sound effects
 + Visualize exploding mines
-+ Healthbar to visualize the remaining patches
++ Health bar to visualize the remaining patches
 + Shadows in FC3D
 
 [Jump to table of contents](#toc)
