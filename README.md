@@ -85,7 +85,64 @@ You can restore the project to a pristine state:
 
 ## Playing Fuze Creek
 
-(documentation not yet written)
+The game consists of steering a raft down a river
+containing naval mines and exposed sharp rocks.
+The raft automatically advances downstream.
+It advances in discrete jumps, one row at a time.
+The objective is to maximize points while avoiding mines and rocks.
+
+### Scoring system
+
+Points are awarded for:
+
+1. making downstream progress (1 point per row) and
+2. removing mines by navigating alongside them
+   without making contact (20 points per mine)
+
+If the raft crosses over a mine, the mine will detonate,
+ending the game with a deduction of 100 points.
+
+You begin the game with 20 patches.
+Each time the raft crosses over a rock,
+you automatically expend one patch to repair damage caused by the rock.
+If no patches remain, the raft sinks, ending the game.
+
+If the raft runs up against either bank (side) of the river, the game ends.
+
+### Controls
+
+All versions are controlled entirely using the keyboard;
+no mouse or trackpad is required.
+
+When run, the game opens a single window.
+For the controls to work, this window must be selected to receive input.
+Some window managers select windows
+based on the position of the mouse pointer.
+If none of the controls work, try selecting the game window
+by clicking on it or moving the mouse pointer into it.
+
+General controls found in all versions of the game:
+
++ Esc : end the game immediately
++ A or LeftArrow : steer left
++ D or RightArrow : steer right
+
+Additional controls found in FC2D and FC3D:
+
++ H or F1 : toggle the help node in the upper-right corner of the window
++ F5 : toggle the render statistics in the lower-left corner of the window
++ Prt Scr : capture a screenshot to the working directory
+
+Additional caveats:
+
++ Steering is effective only when the raft advances.
+  To steer, you must press a key and hold it down.
++ On Linux systems, the Prt Scr key might be needed by the window manager,
+  so the Scroll Lock key is used instead.
++ The key descriptions above assume a keyboard
+  with the "United States QWERTY" layout.
+  On some keyboards, the keys in the A, D, and H positions
+  are labelled differently.
 
 [Jump to table of contents](#toc)
 
