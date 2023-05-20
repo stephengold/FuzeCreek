@@ -12,7 +12,7 @@ It contains 4 sub-projects:
     implemented using "ASCII graphics"
 
 Assets and Java source code are provided under
-[a FreeBSD license][license].
+[a 3-clause BSD license][license].
 
 
 <a name="toc"></a>
