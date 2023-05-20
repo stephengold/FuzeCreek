@@ -39,7 +39,7 @@ import com.github.stephengold.fuzecreek.RockCell;
 import com.github.stephengold.fuzecreek.Row;
 import com.github.stephengold.fuzecreek.View;
 import com.github.stephengold.fuzecreek.WaterOnlyCell;
-import com.jme3.app.StatsAppState;
+import com.jme3.app.state.AppState;
 import com.jme3.input.KeyInput;
 import com.jme3.system.AppSettings;
 import java.io.PrintStream;
@@ -102,6 +102,15 @@ public class FCConsole
      */
     private static Generator generator;
     // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate an AcorusDemo without a FlyCamAppState or a StatsAppState.
+     */
+    private FCConsole() {
+        super((AppState[]) null);
+    }
+    // *************************************************************************
     // new methods exposed
 
     /**
@@ -141,9 +150,6 @@ public class FCConsole
         gameState = new GameState(this, generator, numDownstreamRows);
         //gameState.setAdvanceMillis(999999L); // while debugging
 
-        // Disable the JME stats display, which was enabled at its creation.
-        stateManager.getState(StatsAppState.class).toggleStats();
-
         super.acorusInit();
         gameState.addAllRows();
     }
@@ -154,11 +160,6 @@ public class FCConsole
     @Override
     public void moreDefaultBindings() {
         InputMode diMode = getDefaultInputMode();
-        diMode.unbind(KeyInput.KEY_C);
-        diMode.unbind(KeyInput.KEY_Q);
-        diMode.unbind(KeyInput.KEY_S);
-        diMode.unbind(KeyInput.KEY_W);
-        diMode.unbind(KeyInput.KEY_Z);
         /*
          * To steer, press the A and D keys on the keyboard,
          * or the left and right arrow keys.
