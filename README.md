@@ -11,8 +11,8 @@ It contains 4 sub-projects:
  4. FCConsole: a (very retro) console-based version of the game,
     implemented using "ASCII graphics"
 
-Java source code is provided under
-[a FreeBSD license](https://github.com/stephengold/FuzeCreek/blob/master/LICENSE).
+Assets and Java source code are provided under
+[a FreeBSD license][license].
 
 
 <a name="toc"></a>
@@ -99,3 +99,7 @@ Java source code is provided under
 (documentation not yet written)
 
 [Jump to table of contents](#toc)
+
+
+[jme]: https://jmonkeyengine.org "jMonkeyEngine Project"
+[license]: https://github.com/stephengold/FuzeCreek/blob/master/LICENSE "FuzeCreek license"
