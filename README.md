@@ -190,8 +190,8 @@ artists and software developers:
     + Microsoft Windows
     + the [NetBeans] integrated development environment
 
-I am grateful to [GitHub] for providing free hosting for the
-FuzeCreek Project and many other open-source projects.
+I am grateful to [GitHub] for providing free hosting for this project
+and many other open-source projects.
 
 I'm also grateful to my dear Holly, for keeping me sane.
 
