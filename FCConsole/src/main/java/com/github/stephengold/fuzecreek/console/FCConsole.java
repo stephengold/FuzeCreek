@@ -58,7 +58,7 @@ import jme3utilities.ui.Signals;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class FCConsole
+final public class FCConsole
         extends AcorusDemo
         implements View {
     // *************************************************************************
