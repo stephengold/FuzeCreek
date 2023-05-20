@@ -29,6 +29,7 @@
  */
 package com.github.stephengold.fuzecreek;
 
+import java.util.logging.Logger;
 import jme3utilities.Validate;
 
 /**
@@ -37,6 +38,13 @@ import jme3utilities.Validate;
  * @author Stephen Gold sgold@sonic.net
  */
 abstract public class Cell {
+    // *************************************************************************
+    // constants and loggers
+
+    /**
+     * message logger for this class
+     */
+    final public static Logger logger = Logger.getLogger(Cell.class.getName());
     // *************************************************************************
     // fields
 
