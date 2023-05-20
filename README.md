@@ -22,8 +22,6 @@ Assets and Java source code are provided under
  + [How to download and run a pre-built release of Fuze Creek](#prebuilt)
  + [How to build and run Fuze Creek from source](#build)
  + [Playing Fuze Creek](#play)
- + [Command-line arguments](#args)
- + [External links](#links)
  + [Wish list](#wishlist)
  + [History](#history)
  + [Acknowledgments](#acks)
@@ -50,24 +48,6 @@ Assets and Java source code are provided under
 <a name="play"></a>
 
 ## Playing Fuze Creek
-
-(documentation not yet written)
-
-[Jump to table of contents](#toc)
-
-
-<a name="args"></a>
-
-## Command-line arguments
-
-(documentation not yet written)
-
-[Jump to table of contents](#toc)
-
-
-<a name="links"></a>
-
-## External links
 
 (documentation not yet written)
 
