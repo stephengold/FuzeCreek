@@ -19,9 +19,9 @@ Assets and Java source code are provided under
 
 ## Contents of this document
 
- + [How to download and run a pre-built release of Fuze Creek](#prebuilt)
- + [How to build and run Fuze Creek from source](#build)
- + [Playing Fuze Creek](#play)
+ + [How to download and run a pre-built release of FuzeCreek](#prebuilt)
+ + [How to build and run FuzeCreek from source](#build)
+ + [Playing FuzeCreek](#play)
  + [Wish list](#wishlist)
  + [History](#history)
  + [Acknowledgments](#acks)
@@ -29,7 +29,7 @@ Assets and Java source code are provided under
 
 <a name="prebuilt"></a>
 
-## How to download and run a pre-built release of Fuze Creek
+## How to download and run a pre-built release of FuzeCreek
 
 (documentation not yet written)
 
@@ -38,7 +38,7 @@ Assets and Java source code are provided under
 
 <a name="build"></a>
 
-## How to build and run Fuze Creek from source
+## How to build and run FuzeCreek from source
 
 1. Install a [Java Development Kit (JDK)][adoptium],
    if you don't already have one.
@@ -83,7 +83,7 @@ You can restore the project to a pristine state:
 
 <a name="play"></a>
 
-## Playing Fuze Creek
+## Playing FuzeCreek
 
 The game consists of steering a raft down a river
 containing naval mines and exposed sharp rocks.
