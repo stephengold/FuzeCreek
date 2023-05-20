@@ -169,13 +169,51 @@ Additional caveats:
 
 ## Acknowledgments
 
-(documentation not yet written)
+Like most projects, FuzeCreek builds on the work of many who
+have gone before.  I therefore acknowledge the following
+artists and software developers:
+
++ the creators of (and contributors to) the following software:
+    + the [Blender] 3-D animation suite
+    + the [Checkstyle] tool
+    + the [Firefox] web browser
+    + the [Git] revision-control system and GitK commit viewer
+    + the [GitKraken] client
+    + the [Gradle] build tool
+    + the [IntelliJ IDEA][idea] and [NetBeans] integrated development environments
+    + the [Java] compiler, standard doclet, and runtime environment
+    + [jMonkeyEngine][jme] and the jME3 Software Development Kit
+    + the [Linux Mint][mint] operating system
+    + LWJGL, the Lightweight Java Game Library
+    + the [Markdown] document conversion tool
+    + the [Meld] visual merge tool
+    + Microsoft Windows
+    + the [NetBeans] integrated development environment
+
+I am grateful to [Github] for providing free hosting for the
+FuzeCreek Project and many other open-source projects.
+
+I'm also grateful to my dear Holly, for keeping me sane.
+
+If I've misattributed anything or left anyone out, please let me know, so I can
+correct the situation: sgold@sonic.net
 
 [Jump to table of contents](#toc)
 
 
 [adoptium]: https://adoptium.net/releases.html "Adoptium Project"
+[blender]: https://docs.blender.org "Blender Project"
+[checkstyle]: https://checkstyle.org "Checkstyle"
+[firefox]: https://www.mozilla.org/en-US/firefox "Firefox"
 [git]: https://git-scm.com "Git"
+[github]: https://github.com "GitHub"
+[gitkraken]: https://www.gitkraken.com "GitKraken client"
 [gradle]: https://gradle.org "Gradle Project"
+[idea]: https://www.jetbrains.com/idea/ "IntelliJ IDEA"
+[java]: https://java.com "Java"
 [jme]: https://jmonkeyengine.org "jMonkeyEngine Project"
 [license]: https://github.com/stephengold/FuzeCreek/blob/master/LICENSE "FuzeCreek license"
+[markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
+[meld]: https://meldmerge.org "Meld merge tool"
+[mint]: https://linuxmint.com "Linux Mint Project"
+[netbeans]: https://netbeans.org "NetBeans Project"
