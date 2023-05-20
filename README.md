@@ -19,12 +19,12 @@ Assets and complete source code (in Java) are provided under
 
 ## Contents of this document
 
- + [How to download and run a pre-built release of FuzeCreek](#prebuilt)
- + [How to build and run FuzeCreek from source](#build)
- + [Playing FuzeCreek](#play)
- + [Wish list](#wishlist)
- + [History](#history)
- + [Acknowledgments](#acks)
++ [How to download and run a pre-built release of FuzeCreek](#prebuilt)
++ [How to build and run FuzeCreek from source](#build)
++ [Playing FuzeCreek](#play)
++ [Wish list](#wishlist)
++ [History](#history)
++ [Acknowledgments](#acks)
 
 
 <a name="prebuilt"></a>
