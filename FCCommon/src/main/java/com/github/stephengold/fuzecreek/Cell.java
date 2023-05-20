@@ -76,7 +76,7 @@ abstract public class Cell {
         this.mapX = mapX;
     }
     // *************************************************************************
-    // new methods added
+    // new methods exposed
 
     /**
      * Callback invoked each time a player collects this Cell (by maneuvering
