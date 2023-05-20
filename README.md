@@ -42,9 +42,9 @@ Assets and complete source code (in Java) are provided under
 
 1. Install a [Java Development Kit (JDK)][adoptium],
    if you don't already have one.
-2. Point the `JAVA_HOME` environment variable to your JDK installation:
+2. Point the "JAVA_HOME" environment variable to your JDK installation.
    (The path might be something like "C:\Program Files\Java\jre1.8.0_301"
-   or "/usr/lib/jvm/java-8-openjdk-amd64/" or
+   or "/usr/lib/jvm/java-8-openjdk-amd64" or
    "/Library/Java/JavaVirtualMachines/liberica-jdk-17-full.jdk/Contents/Home" .)
   + using Bash or Zsh: `export JAVA_HOME="` *path to installation* `"`
   + using Windows Command Prompt: `set JAVA_HOME="` *path to installation* `"`
@@ -62,15 +62,15 @@ Assets and complete source code (in Java) are provided under
   + using Bash or PowerShell or Zsh: `./gradlew build`
   + using Windows Command Prompt: `.\gradlew build`
 
-You can run the console-based version using the Gradle wrapper:
+You can run the console-based:
 + using Bash or PowerShell or Zsh: `./gradlew :FCConsole:run`
 + using Windows Command Prompt: `.\gradlew :FCConsole:run`
 
-You can run the 2-D version using the Gradle wrapper:
+You can run the 2-D version:
 + using Bash or PowerShell or Zsh: `./gradlew :FC2D:run`
 + using Windows Command Prompt: `.\gradlew :FC2D:run`
 
-You can run the 3-D version using the Gradle wrapper:
+You can run the 3-D version:
 + using Bash or PowerShell or Zsh: `./gradlew :FC3D:run`
 + using Windows Command Prompt: `.\gradlew :FC3D:run`
 
