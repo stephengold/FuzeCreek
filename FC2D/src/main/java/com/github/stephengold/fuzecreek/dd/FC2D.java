@@ -300,7 +300,7 @@ final public class FC2D
             material = null; // relies on the background color of the ViewPort
 
         } else if (cell instanceof WaterOnlyCell) {
-            material = (Material) viewGenerator.pick(waterOnlyMaterials);
+            material = viewGenerator.pick(waterOnlyMaterials);
 
         } else if (cell instanceof RockCell) {
             material = rockMaterial;
