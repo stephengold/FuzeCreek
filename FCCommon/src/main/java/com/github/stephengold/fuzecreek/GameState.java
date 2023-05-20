@@ -185,7 +185,7 @@ public class GameState {
      *
      * @param rowIndex the desired row index (&ge;0)
      */
-    final private void addRow(int rowIndex) {
+    private void addRow(int rowIndex) {
         Validate.nonNegative(rowIndex, "row index");
         assert !rows.containsKey(rowIndex);
         assert rowIndex == 0 || rows.containsKey(rowIndex - 1);
