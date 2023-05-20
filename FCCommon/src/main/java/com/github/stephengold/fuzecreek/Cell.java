@@ -51,7 +51,7 @@ abstract public class Cell {
     /**
      * Row that contains this Cell
      */
-    final protected Row row;
+    final private Row row;
     // *************************************************************************
     // constructors
 

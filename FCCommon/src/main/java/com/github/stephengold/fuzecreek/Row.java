@@ -70,11 +70,11 @@ public class Row {
     /**
      * index in the game's array of rows (&ge;0)
      */
-    final public int rowIndex;
+    final private int rowIndex;
     /**
      * index of the cell with X=0 (&ge;-leftBankX)
      */
-    final public int x0Index;
+    final private int x0Index;
     // *************************************************************************
     // constructors
 
