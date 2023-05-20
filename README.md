@@ -62,7 +62,7 @@ Assets and complete source code (in Java) are provided under
   + using Bash or PowerShell or Zsh: `./gradlew build`
   + using Windows Command Prompt: `.\gradlew build`
 
-You can run the console-based:
+You can run the console-based version:
 + using Bash or PowerShell or Zsh: `./gradlew :FCConsole:run`
 + using Windows Command Prompt: `.\gradlew :FCConsole:run`
 
@@ -188,7 +188,6 @@ artists and software developers:
     + the [Markdown] document-conversion tool
     + the [Meld] visual merge tool
     + Microsoft Windows
-    + the [NetBeans] integrated development environment
 
 I am grateful to [GitHub] for providing free hosting for this project
 and many other open-source projects.
