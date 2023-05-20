@@ -1,7 +1,7 @@
 # FuzeCreek
 
-A grid-based rafting game with explosives, powered by the
-[jMonkeyEngine (JME)][jme] game engine.
+A grid-based rafting game with explosives, powered by
+[the jMonkeyEngine (JME) game engine][jme].
 
 It contains 4 sub-projects:
 
@@ -11,7 +11,7 @@ It contains 4 sub-projects:
  4. FCConsole: a (very retro) console-based version of the game,
     implemented using "ASCII graphics"
 
-Assets and Java source code are provided under
+Assets and complete source code (in Java) are provided under
 [a 3-clause BSD license][license].
 
 
@@ -185,7 +185,7 @@ artists and software developers:
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
     + the [Linux Mint][mint] operating system
     + LWJGL, the Lightweight Java Game Library
-    + the [Markdown] document conversion tool
+    + the [Markdown] document-conversion tool
     + the [Meld] visual merge tool
     + Microsoft Windows
     + the [NetBeans] integrated development environment
