@@ -103,4 +103,15 @@ abstract public class Cell {
     final public void setViewData(Object viewData) {
         this.viewData = viewData;
     }
+    // *************************************************************************
+    // new protected methods
+
+    /**
+     * Access the Row containing this Cell.
+     *
+     * @return
+     */
+    final protected Row getRow() {
+        return row;
+    }
 }

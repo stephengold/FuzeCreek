@@ -76,6 +76,7 @@ abstract public class BankCell extends Cell {
      */
     @Override
     public void collide() {
-        row.gameState.terminate(Cause.GROUNDED);
+        Row r = getRow();
+        r.gameState.terminate(Cause.GROUNDED);
     }
 }

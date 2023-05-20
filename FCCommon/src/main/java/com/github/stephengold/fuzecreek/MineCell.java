@@ -56,8 +56,9 @@ public class MineCell extends Cell {
      */
     @Override
     public void collect() {
-        row.collectCell(mapX);
-        row.gameState.scorePoints(20);
+        Row r = getRow();
+        r.collectCell(mapX);
+        r.gameState.scorePoints(20);
     }
 
     /**
@@ -65,7 +66,8 @@ public class MineCell extends Cell {
      */
     @Override
     public void collide() {
-        row.gameState.scorePoints(-100);
-        row.gameState.terminate(Cause.BOOM);
+        Row r = getRow();
+        r.gameState.scorePoints(-100);
+        r.gameState.terminate(Cause.BOOM);
     }
 }

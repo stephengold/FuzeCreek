@@ -62,7 +62,8 @@ public class LeftBankCell extends BankCell {
     public int upstreamDeltaX() {
         int result;
 
-        Row upstream = row.findUpstreamRow();
+        Row r = getRow();
+        Row upstream = r.findUpstreamRow();
         if (upstream == null) {
             result = 0;
         } else {

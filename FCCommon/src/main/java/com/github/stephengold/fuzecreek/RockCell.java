@@ -55,6 +55,7 @@ public class RockCell extends Cell {
      */
     @Override
     public void collide() {
-        row.gameState.consumePatches(1);
+        Row r = getRow();
+        r.gameState.consumePatches(1);
     }
 }
