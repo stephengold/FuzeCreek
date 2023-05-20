@@ -117,7 +117,7 @@ abstract public class Cell {
     /**
      * Access the Row containing this Cell.
      *
-     * @return
+     * @return the pre-existing Row
      */
     final protected Row getRow() {
         return row;
