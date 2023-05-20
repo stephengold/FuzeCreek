@@ -168,7 +168,7 @@ public class Row {
     /**
      * Access the cell at the specified X coordinate.
      *
-     * @param mapX the map X coordinate coordinate (may be negative)
+     * @param mapX the map X coordinate (may be negative)
      * @return the pre-existing instance, or null if none
      */
     public Cell findCell(int mapX) {

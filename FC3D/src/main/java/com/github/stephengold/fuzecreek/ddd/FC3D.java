@@ -163,7 +163,7 @@ final public class FC3D
     /**
      * parent all sky geometries for efficient water effects
      */
-    final private static Node reflectiblesNode = new Node("reflectables");
+    final private static Node reflectiblesNode = new Node("reflectibles");
     /**
      * parent all cell geometries for efficient vertical scrolling
      */
