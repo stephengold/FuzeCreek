@@ -3,15 +3,6 @@
 apply plugin: 'checkstyle'
 apply plugin: 'java'
 
-ext {
-    // module coordinates of dependencies:
-    acorusCoordinates = 'com.github.stephengold:Acorus:1.0.0'
-    heartCoordinates = 'com.github.stephengold:Heart:8.6.0'
-
-    // current versions of libraries:
-    jme3Version = '3.6.0-stable'
-}
-
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
