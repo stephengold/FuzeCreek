@@ -38,5 +38,5 @@ tasks.withType(JavaExec).configureEach { // Java runtime options:
 }
 
 configurations.configureEach {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds' // to disable caching of SNAPSHOTs
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds' // to disable caching of snapshots
 }
