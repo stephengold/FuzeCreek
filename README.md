@@ -47,6 +47,7 @@ Assets and complete source code (in Java) are provided under
    or "/usr/lib/jvm/java-8-openjdk-amd64" or
    "/Library/Java/JavaVirtualMachines/liberica-jdk-17-full.jdk/Contents/Home" .)
   + using Bash or Zsh: `export JAVA_HOME="` *path to installation* `"`
+  + using [Fish]: `set -g JAVA_HOME "` *path to installation* `"`
   + using Windows Command Prompt: `set JAVA_HOME="` *path to installation* `"`
   + using PowerShell: `$env:JAVA_HOME = '` *path to installation* `'`
 3. Download and extract the FuzeCreek source code from GitHub:
@@ -59,23 +60,23 @@ Assets and complete source code (in Java) are provided under
     + extract the contents of the saved ZIP file
     + `cd` to the extracted directory/folder
 4. Run the [Gradle] wrapper:
-  + using Bash or PowerShell or Zsh: `./gradlew build`
+  + using Bash or Fish or PowerShell or Zsh: `./gradlew build`
   + using Windows Command Prompt: `.\gradlew build`
 
 You can run the console-based version:
-+ using Bash or PowerShell or Zsh: `./gradlew :FCConsole:run`
++ using Bash or Fish or PowerShell or Zsh: `./gradlew :FCConsole:run`
 + using Windows Command Prompt: `.\gradlew :FCConsole:run`
 
 You can run the 2-D version:
-+ using Bash or PowerShell or Zsh: `./gradlew :FC2D:run`
++ using Bash or Fish or PowerShell or Zsh: `./gradlew :FC2D:run`
 + using Windows Command Prompt: `.\gradlew :FC2D:run`
 
 You can run the 3-D version:
-+ using Bash or PowerShell or Zsh: `./gradlew :FC3D:run`
++ using Bash or Fish or PowerShell or Zsh: `./gradlew :FC3D:run`
 + using Windows Command Prompt: `.\gradlew :FC3D:run`
 
 You can restore the project to a pristine state:
-+ using Bash or PowerShell or Zsh: `./gradlew clean`
++ using Bash or Fish or PowerShell or Zsh: `./gradlew clean`
 + using Windows Command Prompt: `.\gradlew clean`
 
 [Jump to table of contents](#toc)
@@ -209,6 +210,7 @@ correct the situation: sgold@sonic.net
 [blender]: https://docs.blender.org "Blender Project"
 [checkstyle]: https://checkstyle.org "Checkstyle"
 [firefox]: https://www.mozilla.org/en-US/firefox "Firefox"
+[fish]: https://fishshell.com/ "Fish command-line shell"
 [git]: https://git-scm.com "Git"
 [github]: https://github.com "GitHub"
 [gitkraken]: https://www.gitkraken.com "GitKraken client"
