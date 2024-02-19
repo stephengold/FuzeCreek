@@ -33,7 +33,7 @@ Assets and complete source code (in Java) are provided under
 
 (documentation not yet written)
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="build"></a>
@@ -79,7 +79,7 @@ You can restore the project to a pristine state:
 + using Bash or Fish or PowerShell or Zsh: `./gradlew clean`
 + using Windows Command Prompt: `.\gradlew clean`
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="play"></a>
@@ -145,7 +145,7 @@ Additional caveats:
   On some keyboards, the keys in the A, D, and H positions
   are labelled differently.
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="wishlist"></a>
@@ -159,7 +159,7 @@ Some ideas for future development:
 + Health bar to visualize the remaining patches
 + Shadows in FC3D
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="history"></a>
@@ -168,7 +168,7 @@ Some ideas for future development:
 
 (documentation not yet written)
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="acks"></a>
@@ -203,7 +203,7 @@ I'm also grateful to my dear Holly, for keeping me sane.
 If I've misattributed anything or left anyone out, please let me know, so I can
 correct the situation: sgold@sonic.net
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 [adoptium]: https://adoptium.net/releases.html "Adoptium Project"
