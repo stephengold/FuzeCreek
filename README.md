@@ -193,7 +193,7 @@ artists and software developers:
     + the [Java] compiler, standard doclet, and runtime environment
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
     + the [Linux Mint][mint] operating system
-    + LWJGL, the Lightweight Java Game Library
+    + [LWJGL], the Lightweight Java Game Library
     + the [Markdown] document-conversion tool
     + the [Meld] visual merge tool
     + Microsoft Windows
@@ -222,6 +222,7 @@ correct the situation: sgold@sonic.net
 [java]: https://en.wikipedia.org/wiki/Java_(programming_language) "Java programming language"
 [jme]: https://jmonkeyengine.org "jMonkeyEngine Project"
 [license]: https://github.com/stephengold/FuzeCreek/blob/master/LICENSE "FuzeCreek license"
+[lwjgl]: https://www.lwjgl.org "Lightweight Java Game Library"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
 [meld]: https://meldmerge.org "Meld merge tool"
 [mint]: https://linuxmint.com "Linux Mint Project"
