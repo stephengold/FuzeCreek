@@ -11,7 +11,7 @@ It contains 4 sub-projects:
  4. FCConsole: a (very retro) console-based version of the game,
     implemented using "ASCII graphics"
 
-Assets and complete source code (in Java) are provided under
+Assets and complete source code (in [Java]) are provided under
 [a 3-clause BSD license][license].
 
 
