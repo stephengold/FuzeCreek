@@ -216,7 +216,7 @@ correct the situation: sgold@sonic.net
 [gitkraken]: https://www.gitkraken.com "GitKraken client"
 [gradle]: https://gradle.org "Gradle Project"
 [idea]: https://www.jetbrains.com/idea/ "IntelliJ IDEA"
-[java]: https://java.com "Java"
+[java]: https://en.wikipedia.org/wiki/Java_(programming_language) "Java programming language"
 [jme]: https://jmonkeyengine.org "jMonkeyEngine Project"
 [license]: https://github.com/stephengold/FuzeCreek/blob/master/LICENSE "FuzeCreek license"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
