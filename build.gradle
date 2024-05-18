@@ -5,11 +5,6 @@ plugins {
 }
 
 ext {
-    // module coordinates of dependencies:
-    acorusCoordinates = 'com.github.stephengold:Acorus:2.0.0'
-    heartCoordinates = 'com.github.stephengold:Heart:9.0.0'
-
-    // current versions of libraries:
     jme3Version = '3.7.0-beta1'
 }
 
