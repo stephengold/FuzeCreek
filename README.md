@@ -3,7 +3,7 @@
 A grid-based rafting game with explosives, powered by
 [the jMonkeyEngine (JME) game engine][jme].
 
-It contains 4 sub-projects:
+It contains 4 subprojects:
 
  1. FC2D: a (retro) 2-D version of the game
  2. FC3D: the 3-D version of the game
