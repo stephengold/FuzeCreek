@@ -1,7 +1,9 @@
+// Gradle script to build the FCCommon subproject of FuzeCreek
+
 // Note: "common.gradle" in the root project contains additional initialization
 //   for this project. This initialization is applied in the "build.gradle"
 //   of the root project.
 
 dependencies {
-    implementation heartCoordinates
+    implementation(libs.heart)
 }
