@@ -4,10 +4,6 @@ plugins {
     id 'base' // to add a "clean" task to the root project
 }
 
-ext {
-    jme3Version = '3.7.0-beta1'
-}
-
 subprojects {
     apply from: rootProject.file('common.gradle')
 }
