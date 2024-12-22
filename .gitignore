@@ -1,6 +1,11 @@
+# Ignore Gradle's project-specific cache directory:
 /.gradle/
+
+# Ignore IDE-specific directories:
 /.idea/
 /.nb-gradle/
+
+# Ignore Gradle's build output directories:
 /FC2D/build/
 /FC3D/build/
 /FCCommon/build/
