@@ -11,5 +11,5 @@ subprojects {
 tasks.register('checkstyle') {
     dependsOn ':FC2D:checkstyleMain', ':FC3D:checkstyleMain', \
             ':FCCommon:checkstyleMain', ':FCConsole:checkstyleMain'
-    description 'Checks the style of all Java sourcecode.'
+    description = 'Checks the style of all Java sourcecode.'
 }
