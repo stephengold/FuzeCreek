@@ -6,6 +6,7 @@
 /.nb-gradle/
 
 # Ignore Gradle's build output directories:
+/build/
 /FC2D/build/
 /FC3D/build/
 /FCCommon/build/
