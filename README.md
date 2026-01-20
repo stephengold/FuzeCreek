@@ -41,15 +41,15 @@ Assets and complete source code (in [Java]) are provided under
 ## How to build and run FuzeCreek from source
 
 1. Install a [Java Development Kit (JDK)][adoptium],
-   version 17 or higher,
+   version 21 or higher,
    if you don't already have one.
 2. Point the `JAVA_HOME` environment variable to your JDK installation:
    (In other words, set it to the path of a directory/folder
    containing a "bin" that contains a Java executable.
    That path might look something like
-   "C:\Program Files\Eclipse Adoptium\jdk-17.0.3.7-hotspot"
-   or "/usr/lib/jvm/java-17-openjdk-amd64/" or
-   "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home" .)
+   "C:\Program Files\Eclipse Adoptium\jdk-21.0.3.7-hotspot"
+   or "/usr/lib/jvm/java-21-openjdk-amd64/" or
+   "/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home" .)
   + using Bash or Zsh: `export JAVA_HOME="` *path to installation* `"`
   + using [Fish]: `set -g JAVA_HOME "` *path to installation* `"`
   + using Windows Command Prompt: `set JAVA_HOME="` *path to installation* `"`
