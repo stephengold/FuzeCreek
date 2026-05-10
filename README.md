@@ -70,6 +70,7 @@ Assets and complete source code (in [Java]) are provided under
 You can run the console-based version:
 + using Bash or Fish or PowerShell or Zsh: `./gradlew :FCConsole:run`
 + using Windows Command Prompt: `.\gradlew :FCConsole:run`
+<img height="150" src="https://github.com/stephengold/FuzeCreek/blob/master/FCConsole/FCConsole.png">
 
 You can run the 2-D version:
 + using Bash or Fish or PowerShell or Zsh: `./gradlew :FC2D:run`
