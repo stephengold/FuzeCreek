@@ -78,6 +78,7 @@ You can run the 2-D version:
 You can run the 3-D version:
 + using Bash or Fish or PowerShell or Zsh: `./gradlew :FC3D:run`
 + using Windows Command Prompt: `.\gradlew :FC3D:run`
+<img height="150" src="https://github.com/stephengold/FuzeCreek/blob/master/FC3D/FC3D.png">
 
 You can restore the project to a pristine state:
 + using Bash or Fish or PowerShell or Zsh: `./gradlew clean`
