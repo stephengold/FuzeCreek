@@ -74,6 +74,7 @@ You can run the console-based version:
 You can run the 2-D version:
 + using Bash or Fish or PowerShell or Zsh: `./gradlew :FC2D:run`
 + using Windows Command Prompt: `.\gradlew :FC2D:run`
+<img height="150" src="https://github.com/stephengold/FuzeCreek/blob/master/FC2D/FC2D.png">
 
 You can run the 3-D version:
 + using Bash or Fish or PowerShell or Zsh: `./gradlew :FC3D:run`
