@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021-2023, Stephen Gold
+ Copyright (c) 2021-2026 Stephen Gold
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -196,7 +196,7 @@ final public class FC3D
         Heart.setLoggingLevels(Level.WARNING);
 
         generator = new Generator();
-        //generator = new Generator(99L); // while debugging
+        // generator = new Generator(99L); // while debugging
 
         AppSettings appSettings = new AppSettings(true);
         appSettings.setGammaCorrection(true);
@@ -220,7 +220,7 @@ final public class FC3D
     public void acorusInit() {
         int numDownstreamRows = 125;
         gameState = new GameState(this, generator, numDownstreamRows);
-        //gameState.setAdvanceMillis(999999L); // while debugging
+        // gameState.setAdvanceMillis(999999L); // while debugging
 
         // Disable the JME stats display, which was enabled at its creation.
         stateManager.getState(StatsAppState.class).toggleStats();
@@ -263,7 +263,7 @@ final public class FC3D
         ColorRGBA color = new ColorRGBA(0.4f, 0.2f, 0.1f, opaque);
         Material material = MyAsset.createShadedMaterial(assetManager, color);
         registerMaterial("dry land", material);
-        //material.getAdditionalRenderState().setWireframe(true); // debugging
+        // material.getAdditionalRenderState().setWireframe(true); // debugging
 
         material.setBoolean("UseFog", true);
         material.setColor("FogColor", fogColor.clone());
@@ -295,7 +295,7 @@ final public class FC3D
         // To show/hide the help info, press the F1 key or the H key.
         diMode.bind(asToggleHelp, KeyInput.KEY_F1, KeyInput.KEY_H);
 
-        //diMode.bind("dump", KeyInput.KEY_P); // while debugging
+        // diMode.bind("dump", KeyInput.KEY_P); // while debugging
     }
 
     /**

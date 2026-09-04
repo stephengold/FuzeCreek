@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021-2023, Stephen Gold
+ Copyright (c) 2021-2026 Stephen Gold
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -124,7 +124,7 @@ final public class FCConsole
         Heart.setLoggingLevels(Level.WARNING);
 
         generator = new Generator();
-        //generator = new Generator(99L); // while debugging
+        // generator = new Generator(99L); // while debugging
 
         AppSettings appSettings = new AppSettings(true);
         appSettings.setGammaCorrection(true);
@@ -147,7 +147,7 @@ final public class FCConsole
     public void acorusInit() {
         int numDownstreamRows = 23;
         gameState = new GameState(this, generator, numDownstreamRows);
-        //gameState.setAdvanceMillis(999999L); // while debugging
+        // gameState.setAdvanceMillis(999999L); // while debugging
 
         super.acorusInit();
         gameState.addAllRows();
