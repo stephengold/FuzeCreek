@@ -165,9 +165,12 @@
             <property name="tagOrder" value="@param, @return, @throws, @deprecated"/>
         </module>
         <module name="InvalidJavadocPosition"/>
+        <module name="JavadocContentLocation"/>
+        <module name="JavadocLeadingAsteriskAlign"/>
         <module name="JavadocMethod">
             <property name="allowedAnnotations" value=""/>
         </module>
+        <module name="JavadocMissingLeadingAsterisk"/>
         <module name="JavadocTagContinuationIndentation">
             <property name="offset" value="0"/>
         </module>
