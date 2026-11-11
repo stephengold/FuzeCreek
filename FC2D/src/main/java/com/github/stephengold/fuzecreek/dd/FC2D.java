@@ -70,9 +70,7 @@ import jme3utilities.ui.Signals;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-final public class FC2D
-        extends AcorusDemo
-        implements View {
+final public class FC2D extends AcorusDemo implements View {
     // *************************************************************************
     // constants and loggers
 
